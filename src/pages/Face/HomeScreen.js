@@ -2,6 +2,7 @@ import React from 'react'
 import './HomeScreen.css'
 import { Popover } from 'antd'
 import { useNavigate } from 'react-router-dom'
+import { SignIn } from '../../SignIn.js';
 
 const HomeScreen = () => {
 
@@ -262,8 +263,14 @@ const HomeScreen = () => {
 
       </div>
 
-
+      <div className="App">
+      <header className="App-header">
+        <h1>Welcome to Our App</h1>
+        <SignIn />
+      </header>
     </div>
+    </div>
+    
   )
 }
 
