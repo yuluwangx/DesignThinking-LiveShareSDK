@@ -7,11 +7,11 @@ interface AuthRouteProps {
 }
 
 const AuthRoute: React.FC<AuthRouteProps> = ({ children }) => {
-  const isToken = getToken()
-  if (isToken != null) {
+  const token = getToken()
+  if (token != null) {
     return <>{children}</>
   } else {
-    console.log('is null')
+    console.log('Token is null')
     return <Navigate to="/login" replace />
   }
 }
