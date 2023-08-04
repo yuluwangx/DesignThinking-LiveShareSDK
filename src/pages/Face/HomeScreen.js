@@ -146,9 +146,10 @@ const HomeScreen = () => {
         <div className='right'>
           <div><img className='logo' src="/images/IBM.png" /></div>
           <div className='uu'>
-            <a className='playLink' href="www.baidu.com">
-              <img className='play' src="/images/link.png" />
-              IBM SkillsBuild - Design Thinking</a>
+          <a className='playLink' href="http://www.ibm.com/design/thinking/">
+            <img className='play' src="/images/link.png" />
+            IBM SkillsBuild - Design Thinking
+          </a>
           </div>
         </div>
       </div>
