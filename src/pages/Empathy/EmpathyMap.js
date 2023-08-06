@@ -2,13 +2,15 @@ import './EmpathyMap.css'
 import { DownOutlined } from '@ant-design/icons'
 import { Dropdown, Space } from 'antd'
 import { Popover } from 'antd'
-import { LiveCanvasPage } from './LiveCanvasPage'
-import { LiveShareClient, TestLiveShareHost } from '@microsoft/live-share'
+import { LiveShareClient } from '@microsoft/live-share'
+import { TestLiveShareHost } from '../../utils/TestLiveShareHost'
 import { LiveCanvas, InkingTool } from '@microsoft/live-share-canvas'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { useLiveCanvas } from '../../utils/useLiveCanvas'
+import { useNavigate } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 const EmpathyMap = () => {
-
+  const navigate = useNavigate()
   const containerSchema = {
     initialObjects: {
       liveCanvas: LiveCanvas,
@@ -19,8 +21,14 @@ const EmpathyMap = () => {
   const divRef = useRef()
   const { inkingManager } = useLiveCanvas(liveCanvas, divRef.current)
 
+  const back = async () => {
+    console.log("???")
+    navigate("/")
+  }
+
   const setToPen = useCallback(() => {
     if (inkingManager) {
+      console.log("ininin")
       inkingManager.tool = InkingTool.pen
     }
   }, [inkingManager])
@@ -69,9 +77,9 @@ const EmpathyMap = () => {
 
   const initialize = async () => {
     const client = new LiveShareClient(TestLiveShareHost.create())
+    console.log(client)
     const { container } = await client.joinContainer(containerSchema)
     setliveCanvas(container.initialObjects.liveCanvas)
-    console.log(container)
   }
 
   useEffect(() => {
@@ -241,6 +249,7 @@ const EmpathyMap = () => {
             <img className='Ereturn' src="/images/in.png" alt=""
             />
           </div>
+          <Button onClick={back}>back</Button>
         </div>
 
       </div>

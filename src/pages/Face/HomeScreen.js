@@ -2,8 +2,10 @@ import React from 'react'
 import './HomeScreen.css'
 import { Popover } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { SignIn } from '../../SignIn.js';
-
+import { SignIn } from '../../SignIn.js'
+import { removePen } from '../../utils/pen_token'
+import { removePenScen } from '../../utils/pen_token_scen'
+import { removeSticker } from '../../utils/sticker_token'
 const HomeScreen = () => {
 
   const navigate = useNavigate()
@@ -45,7 +47,17 @@ const HomeScreen = () => {
   }
 
   const experience = () => {
-    alert("ok")
+    removePen()
+    removePenScen()
+    removeSticker()
+    alert("clear ok")
+  }
+
+  const Back = () => {
+    removePen()
+    removePenScen()
+    removeSticker()
+    alert("clear finish")
   }
 
   const stackholderInfo = (
@@ -146,10 +158,9 @@ const HomeScreen = () => {
         <div className='right'>
           <div><img className='logo' src="/images/IBM.png" /></div>
           <div className='uu'>
-          <a className='playLink' href="http://www.ibm.com/design/thinking/">
-            <img className='play' src="/images/link.png" />
-            IBM SkillsBuild - Design Thinking
-          </a>
+            <a className='playLink' href="www.baidu.com">
+              <img className='play' src="/images/link.png" />
+              IBM SkillsBuild - Design Thinking</a>
           </div>
         </div>
       </div>
@@ -265,7 +276,7 @@ const HomeScreen = () => {
       </div>
 
     </div>
-    
+
   )
 }
 

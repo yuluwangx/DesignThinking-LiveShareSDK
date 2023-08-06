@@ -39,5 +39,6 @@ const localConnectionConfig: AzureLocalConnectionConfig = {
 }
 
 export const connectionConfig: AzureClientProps = {
-  connection: useAzure ? remoteConnectionConfig : localConnectionConfig,
+  // connection: useAzure ? remoteConnectionConfig : localConnectionConfig,
+  connection: localConnectionConfig,
 }
