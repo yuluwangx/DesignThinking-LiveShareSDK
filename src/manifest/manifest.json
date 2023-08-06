@@ -28,10 +28,10 @@
         "full": "IBM Design Thinking Toolkit is a dynamic and interactive application that serves as a platform for real-time collaboration and innovative problem-solving. This toolkit enables teams to brainstorm, ideate, and iterate on solutions in a virtual environment, effectively bridging geographical gaps and fostering seamless remote collaboration."
     },
     "icons": {
-        "outline": "A relative path to a transparent .png icon — 32px X 32px",
-        "color": "A relative path to a full color .png icon — 192px X 192px"
+        "outline": "src/assets/DesignThinkingLogo.png",
+        "color": "src/assets/FullColor.png"
     },
-    "accentColor": "A valid HTML color code.",
+    "accentColor": "#FFFFFF",
     "configurableTabs": [
         {
             "configurationUrl": "https://contoso.com/teamstab/configure",
@@ -48,10 +48,9 @@
                 "meetingSidePanel",
                 "meetingStage"
             ],
-            "sharePointPreviewImage": "Relative path to a tab preview image for use in SharePoint — 1024px X 768",
+            "sharePointPreviewImage": "src/assets/PreviewImg.jpg",
             "supportedSharePointHosts": [
-                "sharePointFullPage",
-                "sharePointWebPart"
+                "sharePointFullPage"
             ]
         }
     ],
@@ -77,7 +76,7 @@
     ],
     "bots": [
         {
-            "botId": "%MICROSOFT-APP-ID-REGISTERED-WITH-BOT-FRAMEWORK%",
+            "botId": "66742fe7-5d0b-4c63-af94-922464eff9fd",
             "scopes": [
                 "team",
                 "personal",
@@ -87,7 +86,7 @@
             "isNotificationOnly": false,
             "supportsFiles": true,
             "supportsCalling": false,
-            "supportsVideo": true,
+            "supportsVideo": false,
             "commandLists": [
                 {
                     "scopes": [
