@@ -14,9 +14,9 @@
     },
     "developer": {
         "name": "Yulu Wang",
-        "websiteUrl": "https://example.com/",
-        "privacyUrl": "https://example.com/privacy",
-        "termsOfUseUrl": "https://example.com/app-tos",
+        "websiteUrl": "https://eb30-164-40-221-69.ngrok-free.app",
+        "privacyUrl": "https://eb30-164-40-221-69.ngrok-free.app",
+        "termsOfUseUrl": "https://eb30-164-40-221-69.ngrok-free.app",
         "mpnId": "1234567890"
     },
     "name": {
@@ -28,8 +28,8 @@
         "full": "IBM Design Thinking Toolkit is a dynamic and interactive application that serves as a platform for real-time collaboration and innovative problem-solving. This toolkit enables teams to brainstorm, ideate, and iterate on solutions in a virtual environment, effectively bridging geographical gaps and fostering seamless remote collaboration."
     },
     "icons": {
-        "outline": "src/assets/DesignThinkingLogo.png",
-        "color": "src/assets/FullColor.png"
+        "outline": "src/outline.png",
+        "color": "src/color.png"
     },
     "accentColor": "#FFFFFF",
     "configurableTabs": [
