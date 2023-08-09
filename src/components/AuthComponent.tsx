@@ -1,4 +1,3 @@
-import { getToken } from '../utils/token'
 import { Navigate } from 'react-router-dom'
 import React, { ReactNode } from 'react'
 
@@ -7,13 +6,7 @@ interface AuthRouteProps {
 }
 
 const AuthRoute: React.FC<AuthRouteProps> = ({ children }) => {
-  const token = getToken()
-  if (token != null) {
-    return <>{children}</>
-  } else {
-    console.log('Token is null')
-    return <Navigate to="/login" replace />
-  }
+  return <>{children}</>
 }
 
 export { AuthRoute }

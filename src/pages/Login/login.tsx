@@ -10,8 +10,8 @@ function Login(): JSX.Element {
   const navigate = useNavigate(); // call the useHistory hook
   const handleLogin = async (): Promise<void> => {
     try {
-      await signIn();
-      navigate('/home');  // navigate to home page after successful login
+      // await signIn();
+      navigate('/homeScreen');  // navigate to home page after successful login
     } catch (err) {
       console.log(err);
     }

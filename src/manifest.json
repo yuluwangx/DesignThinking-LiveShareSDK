@@ -14,9 +14,9 @@
     },
     "developer": {
         "name": "Yulu Wang",
-        "websiteUrl": "https://eb30-164-40-221-69.ngrok-free.app",
-        "privacyUrl": "https://eb30-164-40-221-69.ngrok-free.app",
-        "termsOfUseUrl": "https://eb30-164-40-221-69.ngrok-free.app",
+        "websiteUrl": "https://2336-81-145-191-237.ngrok-free.app",
+        "privacyUrl": "https://2336-81-145-191-237.ngrok-free.app",
+        "termsOfUseUrl": "https://2336-81-145-191-237.ngrok-free.app",
         "mpnId": "1234567890"
     },
     "name": {
@@ -28,8 +28,8 @@
         "full": "IBM Design Thinking Toolkit is a dynamic and interactive application that serves as a platform for real-time collaboration and innovative problem-solving. This toolkit enables teams to brainstorm, ideate, and iterate on solutions in a virtual environment, effectively bridging geographical gaps and fostering seamless remote collaboration."
     },
     "icons": {
-        "outline": "src/outline.png",
-        "color": "src/color.png"
+        "outline": "outline.png",
+        "color": "color.png"
     },
     "accentColor": "#FFFFFF",
     "configurableTabs": [
@@ -135,7 +135,7 @@
     "composeExtensions": [
         {
             "canUpdateConfiguration": true,
-            "botId": "%MICROSOFT-APP-ID-REGISTERED-WITH-BOT-FRAMEWORK%",
+            "botId": "66742fe7-5d0b-4c63-af94-922464eff9fd",
             "commands": [
                 {
                     "id": "exampleCmd1",
@@ -196,9 +196,9 @@
                     "fetchTask": false,
                     "taskInfo": {
                         "title": "Initial dialog title",
-                        "width": "Dialog width",
-                        "height": "Dialog height",
-                        "url": "Initial webview URL"
+                        "width": "large",
+                        "height": "large",
+                        "url": "https://2336-81-145-191-237.ngrok-free.app/"
                     }
                 }
             ],
@@ -233,7 +233,7 @@
         "othersite.someplace.com"
     ],
     "webApplicationInfo": {
-        "id": "AAD App ID",
+        "id": "66742fe7-5d0b-4c63-af94-922464eff9fd",
         "resource": "Resource URL for acquiring auth token for SSO"
     },
     "authorization": {
@@ -271,8 +271,7 @@
     "defaultInstallScope": "meetings",
     "defaultGroupCapability": {
         "meetings": "tab",
-        "team": "bot",
-        "groupChat": "bot"
+        "team": "bot"
     },
     "configurableProperties": [
         "name",
