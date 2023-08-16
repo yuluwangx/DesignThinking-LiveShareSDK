@@ -176,7 +176,7 @@ const EmpathyMap = () => {
               <img className='Einfo' src="/images/arrow.png" alt="" />
             </div>
             <div className='Enn'>
-              Arrow
+              Clear
             </div>
           </div>
           <div onClick={setToPen}>
@@ -198,7 +198,7 @@ const EmpathyMap = () => {
               Picture
             </div>
           </div>
-          <div>
+          <div onClick={setToEraser}>
             <div>
               <img className='Einfo' src="/images/shape.png" alt="" />
             </div>
@@ -211,22 +211,22 @@ const EmpathyMap = () => {
                 cursor: 'pointer',
                 outline: 'inherit'
               }}
-                onClick={setToEraser}>
+                >
                 Eraser
               </button>
             </div>
           </div>
-          <div>
+          <div onClick={setToLaserPointer}>
             <div>
               <img className='Einfo' src="/images/sticker.png" alt=""
                 style={{ transform: 'translate(30%, 0%)' }} />
             </div>
             <div className='Enn'
               style={{ transform: 'translate(30%, 0%)' }}>
-              Text
+              Laser
             </div>
           </div>
-          <div>
+          <div onClick={setToHighlighter}>
             <div>
               <img className='Einfo' src="/images/language.png" alt=""
                 style={{ transform: 'translate(-45%, 0%)' }} />
