@@ -8,9 +8,6 @@ import {
 import { DownOutlined } from '@ant-design/icons'
 import { Dropdown, Popover } from 'antd'
 import { connectionConfig, containerSchema } from '../Sticker/Config'
-import { LiveShareClient } from '@microsoft/live-share'
-import { TestLiveShareHostScen } from '../../utils/TestLiveShareHostScen'
-import { LiveCanvas, InkingTool } from '@microsoft/live-share-canvas'
 import { initializeIcons } from '@fluentui/react'
 import {
   AzureClient,
@@ -20,7 +17,7 @@ import {
   BrainstormModel,
   createBrainstormModel,
 } from '../Sticker/BrainstormModel'
-import React, { useEffect, useState, useRef, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 // import * as React from 'react'
 import { ConnectionState, IFluidContainer } from 'fluid-framework'
 import { BrainstormView } from '../Sticker/view/BrainstormView'
@@ -29,10 +26,6 @@ import { ColorPicker } from '../Sticker/view/ColorPicker'
 import { NoteData } from '../Sticker/Types'
 import { NOTE_SIZE } from '../Sticker/view/Note.style'
 import { LiveCanvasPage } from '../Empathy/LiveCanvasPage'
-import { useNavigate } from 'react-router-dom'
-import { getSticker, setSticker } from '../../utils/sticker_token'
-import { Button } from 'react-bootstrap'
-import { useLiveCanvas } from '../../utils/useLiveCanvas'
 const ScenarioMap: React.FC = () => {
   const ScenarioInfo = (
     <div style={{ width: '360px' }}>
@@ -41,11 +34,6 @@ const ScenarioMap: React.FC = () => {
       Scenario Maps tell the story of a better experience for your user.
     </div>
   )
-  const navigate = useNavigate()
-  const back = async () => {
-    console.log('???')
-    navigate('/')
-  }
 
   interface MenuItem {
     label: JSX.Element
@@ -142,56 +130,32 @@ const ScenarioMap: React.FC = () => {
     }
   }, [container, audience, setMembersCallback])
 
-  const [liveCanvas, setliveCanvas] = useState(undefined)
-  const divRef = React.createRef<HTMLDivElement>()
-  //@ts-ignore
-  const { inkingManager } = useLiveCanvas(liveCanvas, divRef.current)
-
-  const setToPen = useCallback(() => {
-    console.log('okk')
-    console.log(inkingManager)
-    if (inkingManager) {
-      console.log('inininininininin')
-      //@ts-ignore
-      inkingManager.tool = InkingTool.pen
-    }
-  }, [inkingManager])
-
-  const initialize = async () => {
-    const client = new LiveShareClient(TestLiveShareHostScen.create())
-    const { container } = await client.joinContainer(containerSchema)
-    //@ts-ignore
-    setliveCanvas(container.initialObjects.liveCanvas)
-    console.log(container)
-  }
-
   useEffect(() => {
     const start = async () => {
       initializeIcons()
+
       const getContainerId = (): { containerId: string; isNew: boolean } => {
         let isNew = false
-        if (getSticker() === null) {
-          console.log('newnewnew')
+        if (window.location.hash.length === 0) {
           isNew = true
         }
-        const containerId = getSticker()
-        console.log('得到了' + containerId)
-        //@ts-ignore
+        const containerId = window.location.hash.substring(1)
         return { containerId, isNew }
       }
 
       const { containerId, isNew } = getContainerId()
+
       const client = new AzureClient(connectionConfig)
+
       let container: IFluidContainer
       let services: AzureContainerServices
 
       if (isNew) {
-        console.log('test new ')
         ;({ container, services } = await client.createContainer(
           containerSchema
         ))
         const containerId = await container.attach()
-        setSticker(containerId)
+        window.location.hash = containerId
       } else {
         ;({ container, services } = await client.getContainer(
           containerId,
@@ -210,7 +174,6 @@ const ScenarioMap: React.FC = () => {
       setServices(services)
     }
     start().catch((error) => console.error(error))
-    initialize()
   }, [])
 
   function uuidv4() {
@@ -287,7 +250,7 @@ const ScenarioMap: React.FC = () => {
             </div>
             <div className="Enn">Sticker</div>
           </div>
-          <div onClick={setToPen}>
+          <div>
             <div>
               <img className="Einfo" src="/images/arrow.png" alt="" />
             </div>
@@ -361,13 +324,10 @@ const ScenarioMap: React.FC = () => {
           <div>
             <img className="Ereturn" src="/images/in.png" alt="" />
           </div>
-          <Button onClick={back}>back</Button>
         </div>
       </div>
       <BrainstormView container={container} services={services} />
-      <div id="inkingRoot">
-        <div id="inkingHost" ref={divRef}></div>
-      </div>
+      <LiveCanvasPage></LiveCanvasPage>
     </div>
   )
 }
