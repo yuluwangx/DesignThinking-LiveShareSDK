@@ -10,8 +10,8 @@ const HomeScreen = () => {
 
   const navigate = useNavigate()
 
-  const stackholder = () => {
-    alert("ok")
+  const stakeholder = () => {
+    navigate("/stakeholdermap")
   }
 
   const empathy = () => {
@@ -169,9 +169,8 @@ const HomeScreen = () => {
       <div className='content'>
 
         <div className='firstRow'>
-          <div className='block stackholder' onClick={stackholder}>
-
-            <Popover content={stackholderInfo} title="Stackholder Map" trigger="hover">
+          <div className='block stackholder' onClick={stakeholder}>
+            <Popover content={stackholderInfo} title="Stakeholer Map" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
             <div className='ttt'>Stakeholder</div>

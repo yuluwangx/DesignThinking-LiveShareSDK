@@ -16,6 +16,7 @@ import ScenarioMap from './pages/Scenario/Scenario'
 import BrainstormPage from '../src/pages/Sticker/BrainStormPage'
 import { LiveCanvasPage } from './pages/Empathy/LiveCanvasPage'
 import { inTeams } from './utils/inTeams'
+import StakeholderMap from './pages/Stakeholder/Stakeholder'
 
 
 function App() {
@@ -56,6 +57,15 @@ function App() {
               // </AuthRoute>
             }
           />
+          
+          <Route
+            path="/stakeholdermap"
+            element={
+              // <AuthRoute>
+              <StakeholderMap />
+              // </AuthRoute>
+            }></Route>
+
           <Route
             path="/empathymap"
             element={

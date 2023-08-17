@@ -1,4 +1,4 @@
-import './Scenario.css'
+import './Stakeholder.css'
 import {
   CommandBar,
   ICommandBarItemProps,
@@ -26,10 +26,7 @@ import { ColorPicker } from '../Sticker/view/ColorPicker'
 import { NoteData } from '../Sticker/Types'
 import { NOTE_SIZE } from '../Sticker/view/Note.style'
 import { LiveCanvasPage } from '../Empathy/LiveCanvasPage'
-import { useNavigate } from 'react-router-dom'
-
-
-const ScenarioMap: React.FC = () => {
+const StakeholderMap: React.FC = () => {
   const ScenarioInfo = (
     <div style={{ width: '360px' }}>
       As-is Scenario Maps help to document collective understanding of user
@@ -224,7 +221,7 @@ const ScenarioMap: React.FC = () => {
     <div className="Enine">
       <div className="Eup">
         <div className="Eleft">
-          <div className="Etext">Scenario Map</div>
+          <div className="Etext">Stakeholder Map</div>
           <div>
             <Popover
               content={ScenarioInfo}
@@ -335,4 +332,4 @@ const ScenarioMap: React.FC = () => {
   )
 }
 
-export default ScenarioMap
+export default StakeholderMap
