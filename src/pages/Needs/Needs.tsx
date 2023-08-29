@@ -1,4 +1,4 @@
-import './Scenario.css'
+import './Needs.css'
 import {
   CommandBar,
   ICommandBarItemProps,
@@ -33,12 +33,12 @@ import { useNavigate } from 'react-router-dom'
 import { getSticker, setSticker } from '../../utils/sticker_token'
 import { Button } from 'react-bootstrap'
 import { useLiveCanvas } from '@microsoft/live-share-react'
-const ScenarioMap: React.FC = () => {
-  const ScenarioInfo = (
+const NeedsStatements: React.FC = () => {
+  const NeedsInfo = (
     <div style={{ width: '360px' }}>
-      As-is Scenario Maps help to document collective understanding of user
-      workflows and are best used as precursors to exploring new ideas. To-be
-      Scenario Maps tell the story of a better experience for your user.
+      This is a very effective activity to use with your team
+      when you feel that you’re drifting away from the actual needs, desires, and goals of your user.
+      It helps reorient or reframe the work around your user.
     </div>
   )
   const navigate = useNavigate()
@@ -54,9 +54,13 @@ const ScenarioMap: React.FC = () => {
     navigate('/empathymap')
   }
 
+  const stakeholder = () => {
+    navigate('/stakeholdermap')
+  }
+
   const items: MenuItem[] = [
     {
-      label: <a href=" ">Stackholder Map</a >,
+      label: <div onClick={stakeholder}>Stakeholder Map</div >,
       key: '0',
     },
     {
@@ -211,13 +215,13 @@ const ScenarioMap: React.FC = () => {
       },
       lastEdited: {
         // @ts-ignore
-        userId: '登录后修改',
+        userId: '...',
         // @ts-ignore
-        userName: '登录后修改',
+        userName: '...',
         time: Date.now(),
       },
       // @ts-ignore
-      author: '登录后修改',
+      author: '...',
       numLikesCalculated: 0,
       didILikeThisCalculated: false,
       color,
@@ -385,10 +389,10 @@ const ScenarioMap: React.FC = () => {
     <div className="Enine">
       <div className="Eup">
         <div className="Eleft">
-          <div className="Etext">Scenario Map</div>
+          <div className="Etext">Needs Statement</div>
           <div>
             <Popover
-              content={ScenarioInfo}
+              content={NeedsInfo}
               title="Scenario Map"
               trigger="hover">
               < img className="Einfo" src="/images/info.png" />
@@ -564,4 +568,4 @@ const ScenarioMap: React.FC = () => {
   )
 }
 
-export default ScenarioMap
+export default NeedsStatements

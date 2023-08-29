@@ -17,6 +17,7 @@ import BrainstormPage from '../src/pages/Sticker/BrainStormPage'
 import { LiveCanvasPage } from './pages/Empathy/LiveCanvasPage'
 import { inTeams } from './utils/inTeams'
 import StakeholderMap from './pages/Stakeholder/Stakeholder'
+import NeedsStatements from './pages/Needs/Needs'
 
 
 function App() {
@@ -66,13 +67,22 @@ function App() {
               // </AuthRoute>
             }></Route>
 
-          <Route
-            path="/empathymap"
-            element={
-              // <AuthRoute>
-              <EmpathyMap />
-              // </AuthRoute>
-            }></Route>
+            <Route
+              path="/empathymap"
+              element={
+                // <AuthRoute>
+                <EmpathyMap />
+                // </AuthRoute>
+              }></Route>
+
+              <Route
+                path="/needsstatements"
+                element={
+                  // <AuthRoute>
+                  <NeedsStatements />
+                  // </AuthRoute>
+                }></Route>
+
           <Route
             path="/brainstorm"
             element={

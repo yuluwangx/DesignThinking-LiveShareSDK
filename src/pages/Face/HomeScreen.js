@@ -31,7 +31,7 @@ const HomeScreen = () => {
   }
 
   const need = () => {
-    alert("ok")
+    navigate("/needsstatements")
   }
 
   const story = () => {

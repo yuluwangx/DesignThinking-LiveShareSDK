@@ -8,6 +8,9 @@ import {
 import { DownOutlined } from '@ant-design/icons'
 import { Dropdown, Popover } from 'antd'
 import { connectionConfig, containerSchema } from '../Sticker/Config'
+import { LiveShareClient } from '@microsoft/live-share'
+import { TestLiveShareHostScen } from '../../utils/TestLiveShareHostScen'
+import { LiveCanvas, InkingTool } from '@microsoft/live-share-canvas'
 import { initializeIcons } from '@fluentui/react'
 import {
   AzureClient,
@@ -17,7 +20,7 @@ import {
   BrainstormModel,
   createBrainstormModel,
 } from '../Sticker/BrainstormModel'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 // import * as React from 'react'
 import { ConnectionState, IFluidContainer } from 'fluid-framework'
 import { BrainstormView } from '../Sticker/view/BrainstormView'
@@ -26,6 +29,10 @@ import { ColorPicker } from '../Sticker/view/ColorPicker'
 import { NoteData } from '../Sticker/Types'
 import { NOTE_SIZE } from '../Sticker/view/Note.style'
 import { LiveCanvasPage } from '../Empathy/LiveCanvasPage'
+import { useNavigate } from 'react-router-dom'
+import { getSticker, setSticker } from '../../utils/sticker_token'
+import { Button } from 'react-bootstrap'
+import { useLiveCanvas } from '@microsoft/live-share-react'
 const StakeholderMap: React.FC = () => {
   const ScenarioInfo = (
     <div style={{ width: '360px' }}>
@@ -34,47 +41,54 @@ const StakeholderMap: React.FC = () => {
       Scenario Maps tell the story of a better experience for your user.
     </div>
   )
+  const navigate = useNavigate()
+  const back = async () => {
+    navigate('/homeScreen')
+  }
 
   interface MenuItem {
     label: JSX.Element
     key: string
   }
+  const empathy = () => {
+    navigate('/empathymap')
+  }
 
   const items: MenuItem[] = [
     {
-      label: <a href="/stackholder">Stackholder Map</a>,
+      label: <a href=" ">Stackholder Map</a >,
       key: '0',
     },
     {
-      label: <a href="/empathymap">Empathy Map</a>,
+      label: <div onClick={empathy}>Empathy Map</div>,
       key: '1',
     },
     {
-      label: <a href="https://www.aliyun.com">Big Idea Vignettes</a>,
+      label: <a href="https://www.aliyun.com">Big Idea Vignettes</a >,
       key: '2',
     },
     {
-      label: <a href="https://www.aliyun.com">Priorization Grid</a>,
+      label: <a href="https://www.aliyun.com">Priorization Grid</a >,
       key: '3',
     },
     {
-      label: <a href="https://www.aliyun.com">Needs Statement</a>,
+      label: <a href="https://www.aliyun.com">Needs Statement</a >,
       key: '4',
     },
     {
-      label: <a href="https://www.aliyun.com">Storyboadrding</a>,
+      label: <a href="https://www.aliyun.com">Storyboadrding</a >,
       key: '5',
     },
     {
-      label: <a href="https://www.aliyun.com">Assumption and Questions</a>,
+      label: <a href="https://www.aliyun.com">Assumption and Questions</a >,
       key: '6',
     },
     {
-      label: <a href="https://www.aliyun.com">Feedback Grid</a>,
+      label: <a href="https://www.aliyun.com">Feedback Grid</a >,
       key: '7',
     },
     {
-      label: <a href="https://www.aliyun.com">Experience-Based Roadmap</a>,
+      label: <a href="https://www.aliyun.com">Experience-Based Roadmap</a >,
       key: '8',
     },
   ]
@@ -133,29 +147,26 @@ const StakeholderMap: React.FC = () => {
   useEffect(() => {
     const start = async () => {
       initializeIcons()
-
       const getContainerId = (): { containerId: string; isNew: boolean } => {
         let isNew = false
-        if (window.location.hash.length === 0) {
+        if (getSticker() === null) {
           isNew = true
         }
-        const containerId = window.location.hash.substring(1)
+        const containerId = getSticker()
+        //@ts-ignore
         return { containerId, isNew }
       }
 
       const { containerId, isNew } = getContainerId()
-
       const client = new AzureClient(connectionConfig)
-
       let container: IFluidContainer
       let services: AzureContainerServices
-
       if (isNew) {
         ;({ container, services } = await client.createContainer(
           containerSchema
         ))
         const containerId = await container.attach()
-        window.location.hash = containerId
+        setSticker(containerId)
       } else {
         ;({ container, services } = await client.getContainer(
           containerId,
@@ -188,6 +199,8 @@ const StakeholderMap: React.FC = () => {
   }
   const [color, setColor] = React.useState(DefaultColor)
   const onAddNote = () => {
+    setZIndexBrainstormView(2)
+    setZIndexDiv(1)
     const { scrollHeight, scrollWidth } = document.getElementById('NoteSpace')!
     const id = uuidv4()
     const newCardData: NoteData = {
@@ -198,19 +211,170 @@ const StakeholderMap: React.FC = () => {
       },
       lastEdited: {
         // @ts-ignore
-        userId: '登录后修改',
+        userId: '...',
         // @ts-ignore
-        userName: '登录后修改',
+        userName: '...',
         time: Date.now(),
       },
       // @ts-ignore
-      author: '登录后修改',
+      author: '...',
       numLikesCalculated: 0,
       didILikeThisCalculated: false,
       color,
     }
     //@ts-ignore
     model.SetNote(id, newCardData)
+  }
+
+  const liveCanvasRef = useRef(null)
+  const [active, setActive] = useState(true)
+  const [tool, setTool] = useState(InkingTool.pen)
+  const [eraser, setEraser] = useState(InkingTool.eraser)
+  const [isCursorShared, setIsCursorShared] = useState(true)
+  const { liveCanvas } = useLiveCanvas(
+    'CUSTOM-LIVE-CANVAS',
+    liveCanvasRef,
+    active,
+    tool,
+    // eraser,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    isCursorShared
+  )
+  const [zIndexDiv, setZIndexDiv] = useState(1)
+
+  const [zIndexBrainstormView, setZIndexBrainstormView] = useState(0)
+
+  const [pE, setPE] = useState('none')
+
+  const doPe = () => {
+    setPE('auto')
+  }
+
+  // const [isDrawingMode, setIsDrawingMode] = useState(false)
+
+  const SetLine = () => {
+    // setIsDrawingMode(true)
+    //@ts-ignore
+    liveCanvasRef.current.style.pointerEvents = 'auto'
+    console.log('笔')
+    setTool(InkingTool.pen)
+  }
+
+  const stickerOn = () => {
+    //@ts-ignore
+    liveCanvasRef.current.style.pointerEvents = 'none'
+    // setZIndexDiv(-10)
+    setIsImageMoveMode(false)
+  }
+
+  const SetEr = () => {
+    //@ts-ignore
+    liveCanvasRef.current.style.pointerEvents = 'auto'
+    setTool(InkingTool.eraser)
+  }
+
+  const [isDrawingMode, setIsDrawingMode] = useState(false)
+
+  const handleMouseOverCanvas = () => {
+    if (isDrawingMode) {
+      //@ts-ignore
+      liveCanvasRef.current.style.pointerEvents = 'auto'
+    }
+  }
+
+  const handleMouseOutCanvas = () => {
+    if (isDrawingMode) {
+      //@ts-ignore
+      liveCanvasRef.current.style.pointerEvents = 'none'
+    }
+  }
+
+  const [imgSrc, setImgSrc] = useState(null)
+  const imageRef = useRef(null)
+
+  //@ts-ignore
+  const handleImageChange = (event) => {
+    const file = event.target.files[0]
+    if (file) {
+      const reader = new FileReader()
+      //@ts-ignore
+      reader.onloadend = () => {
+        //@ts-ignore
+        setImgSrc(reader.result)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  //@ts-ignore
+  const handleDragStart = (e) => {
+    const rect = e.target.getBoundingClientRect()
+    const offsetX = e.clientX - rect.left
+    const offsetY = e.clientY - rect.top
+
+    e.dataTransfer.setData('offsetX', offsetX)
+    e.dataTransfer.setData('offsetY', offsetY)
+  }
+
+  //@ts-ignore
+  const handleDrop = (e) => {
+    e.preventDefault()
+
+    const offsetX = e.dataTransfer.getData('offsetX')
+    const offsetY = e.dataTransfer.getData('offsetY')
+
+    const x = e.clientX - e.target.getBoundingClientRect().left - offsetX
+    const y = e.clientY - e.target.getBoundingClientRect().top - offsetY
+    //@ts-ignore
+    imageRef.current.style.left = `${x}px`
+    //@ts-ignore
+    imageRef.current.style.top = `${y}px`
+  }
+
+  const [scale, setScale] = useState(1)
+  const [rotation, setRotation] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
+  const [startX, setStartX] = useState(0)
+  //@ts-ignore
+  const handleWheel = (e) => {
+    if (e.deltaY > 0) {
+      setScale((prev) => Math.max(prev - 0.1, 0.5))
+    } else {
+      setScale((prev) => Math.min(prev + 0.1, 3))
+    }
+  }
+  //@ts-ignore
+  const handleMouseDown = (e) => {
+    //@ts-ignore
+    setIsDragging(true)
+    //@ts-ignore
+    setStartX(e.clientX)
+  }
+  //@ts-ignore
+  const handleMouseUp = () => {
+    //@ts-ignore
+    setIsDragging(false)
+  }
+  //@ts-ignore
+  const handleMouseMove = (e) => {
+    //@ts-ignore
+    if (isDragging) {
+      //@ts-ignore
+      const diffX = e.clientX - startX
+      //@ts-ignore
+      setRotation((prev) => prev + diffX * 0.5)
+      //@ts-ignore
+      setStartX(e.clientX)
+    }
+  }
+
+  const [isImageMoveMode, setIsImageMoveMode] = useState(false)
+  const setImg = () => {
+    setIsImageMoveMode(true)
+    setZIndexDiv(1)
   }
 
   if (!container || !services) {
@@ -225,9 +389,9 @@ const StakeholderMap: React.FC = () => {
           <div>
             <Popover
               content={ScenarioInfo}
-              title="Scenario Map"
+              title="Stakeholder Map"
               trigger="hover">
-              <img className="Einfo" src="/images/info.png" />
+              < img className="Einfo" src="/images/info.png" />
             </Popover>
             <div className="EdropDown">
               <Dropdown
@@ -237,7 +401,7 @@ const StakeholderMap: React.FC = () => {
                 trigger={['click']}>
                 <a onClick={(e) => e.preventDefault()}>
                   <DownOutlined />
-                </a>
+                </a >
               </Dropdown>
             </div>
           </div>
@@ -246,17 +410,20 @@ const StakeholderMap: React.FC = () => {
         <div className="Emid">
           <div onClick={onAddNote}>
             <div>
-              <img className="Einfo" src="/images/sticker.png" alt="" />
+              < img className="Einfo" src="/images/sticker.png" alt="" />
             </div>
             <div className="Enn">Sticker</div>
           </div>
-          <div>
+          <div
+            onClick={() => {
+              setTool(InkingTool.laserPointer)
+            }}>
             <div>
-              <img className="Einfo" src="/images/arrow.png" alt="" />
+              < img className="Einfo" src="/images/arrow.png" alt="" />
             </div>
-            <div className="Enn">Arrow</div>
+            <div className="Enn">Laser</div>
           </div>
-          <div>
+          <div onClick={SetLine}>
             <div>
               <img
                 className="Einfo"
@@ -279,16 +446,24 @@ const StakeholderMap: React.FC = () => {
               />
             </div>
             <div className="Enn" style={{ transform: 'translate(35%, 0%)' }}>
-              Picture
+              <label htmlFor="fileInput">
+                <input
+                  type="file"
+                  id="fileInput"
+                  style={{ display: 'none' }}
+                  onChange={handleImageChange}
+                />
+                Picture
+              </label>
             </div>
           </div>
-          <div>
+          <div onClick={SetEr}>
             <div>
-              <img className="Einfo" src="/images/shape.png" alt="" />
+              < img className="Einfo" src="/images/shape.png" alt="" />
             </div>
-            <div className="Enn">Shape</div>
+            <div className="Enn">Eraser</div>
           </div>
-          <div>
+          <div onClick={stickerOn}>
             <div>
               <img
                 className="Einfo"
@@ -298,10 +473,10 @@ const StakeholderMap: React.FC = () => {
               />
             </div>
             <div className="Enn " style={{ transform: 'translate(30%, 0%)' }}>
-              Text
+              Move
             </div>
           </div>
-          <div>
+          <div onClick={setImg}>
             <div>
               <img
                 className="Einfo"
@@ -311,23 +486,80 @@ const StakeholderMap: React.FC = () => {
               />
             </div>
             <div className="Enn" style={{ transform: 'translate(5%, 0%)' }}>
-              Highlight
+              Move
             </div>
           </div>
         </div>
 
         <div className="Eright">
           <div>
-            <img className="Eback" src="/images/in.png" alt="" />
+            < img className="Eback" src="/images/in.png" alt="" />
           </div>
 
           <div>
-            <img className="Ereturn" src="/images/in.png" alt="" />
+            < img className="Ereturn" src="/images/in.png" alt="" />
           </div>
+          <Button onClick={back}>back</Button>
         </div>
       </div>
-      <BrainstormView container={container} services={services} />
-      <LiveCanvasPage></LiveCanvasPage>
+
+      <div
+        style={{
+          backgroundImage: 'url(/images/bg.png)',
+          position: 'relative',
+        }}>
+        <div
+          onMouseOver={handleMouseOverCanvas}
+          onMouseOut={handleMouseOutCanvas}
+          ref={liveCanvasRef}
+          style={{
+            width: '1278px',
+            height: '800px',
+            border: '1px solid black',
+            position: 'absolute',
+            zIndex: 2,
+            pointerEvents: 'none',
+          }}
+        />
+        <div
+          style={{
+            width: '1278px',
+            height: '800px',
+            border: '1px solid black',
+            position: 'absolute',
+            overflow: 'hidden',
+            zIndex: zIndexDiv,
+            pointerEvents: isImageMoveMode ? 'auto' : 'none',
+          }}
+          onDrop={handleDrop}
+          onDragOver={(e) => e.preventDefault()}>
+          {imgSrc && (
+            <img
+              ref={imageRef}
+              src={imgSrc}
+              onWheel={handleWheel}
+              onMouseDown={handleMouseDown}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              draggable="true"
+              onDragStart={handleDragStart}
+              style={{
+                position: 'absolute',
+                width: '150px',
+                // cursor: 'move',
+                transform: `scale(${scale}) rotate(${rotation}deg)`,
+                cursor: isDragging ? 'grabbing' : 'grab',
+              }}
+            />
+          )}
+        </div>
+        <div
+          style={{
+            zIndex: -1,
+          }}>
+          <BrainstormView container={container} services={services} />
+        </div>
+      </div>
     </div>
   )
 }

@@ -28,7 +28,7 @@ const EmpathyMap = () => {
 
   const setToPen = useCallback(() => {
     if (inkingManager) {
-      console.log("ininin")
+      console.log("Line button is being clicked")
       inkingManager.tool = InkingTool.pen
     }
   }, [inkingManager])
