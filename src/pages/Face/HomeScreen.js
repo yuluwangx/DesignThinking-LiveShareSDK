@@ -158,7 +158,7 @@ const HomeScreen = () => {
         <div className='right'>
           <div><img className='logo' src="/images/IBM.png" /></div>
           <div className='uu'>
-            <a className='playLink' href="https://www.ibm.com/design/thinking/">
+            <a className='playLink' href="https://www.ibm.com/design/thinking/" target="_blank" rel="noopener noreferrer">
               <img className='play' src="/images/link.png" />
               IBM SkillsBuild - Design Thinking</a>
           </div>
