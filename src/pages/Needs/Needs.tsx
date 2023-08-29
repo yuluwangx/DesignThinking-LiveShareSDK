@@ -507,14 +507,6 @@ const NeedsStatements: React.FC = () => {
         </div>
 
         <div className="Eright">
-          {/* <div>
-            < img className="Eback" src="/images/in.png" alt="" />
-          </div> */}
-
-          {/* <div>
-            < img className="Ereturn" src="/images/in.png" alt="" />
-          </div> */}
-          {/* <Button onClick={back}>back</Button> */}
           <div onClick={back}>
             <div>
               < img className="Einfo" src="/images/return.png" alt="" />
@@ -530,6 +522,69 @@ const NeedsStatements: React.FC = () => {
           backgroundImage: 'url(/images/bg.png)',
           position: 'relative',
         }}>
+            
+            <div
+                style={{
+                    position: 'absolute',
+                    top: '20%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    zIndex: 1000,
+                    background: 'white',
+                    padding: '20px',
+                    border: '1px solid black',
+                    boxShadow: '0 0 10px rgba(0,0,0,0.2)'
+                }}
+            >
+                <h2 style={{ textAlign: 'center', fontSize: '1.5rem', fontWeight: 'bold' }}>Needs Statement</h2>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ display: 'inline-flex', alignItems: 'baseline', justifyContent: 'center' }}>
+                        <input 
+                            type="text" 
+                            style={{
+                                textAlign: 'center',
+                                border: 'none', 
+                                borderBottom: '1px solid black',
+                                outline: 'none',
+                                width: '100px',
+                                marginRight: '4px'
+                            }}
+                            placeholder="Adam"
+                        />
+                        <div style={{fontWeight: 'bold', fontSize: '1.5rem'}}>needs a way to</div>
+                        <input 
+                            type="text" 
+                            style={{
+                                textAlign: 'center',
+                                border: 'none', 
+                                borderBottom: '1px solid black',
+                                outline: 'none',
+                                marginLeft: '4px',
+                                marginRight: '4px',
+                                width: '300px',
+                            }}
+                            placeholder="a fitness tracking app"
+                        />
+                    </div>
+                    <div style={{ display: 'inline-flex', alignItems: 'baseline', justifyContent: 'center', marginTop: '8px' }}>
+                        <div style={{fontWeight: 'bold', fontSize: '1.5rem'}}>so that</div>
+                        <input 
+                            type="text" 
+                            style={{
+                                textAlign: 'center',
+                                border: 'none', 
+                                borderBottom: '1px solid black',
+                                outline: 'none',
+                                width: '400px', // Changed width to 600px
+                                marginLeft: '4px'
+                            }}
+                            placeholder="he can track his workout progress"
+                        />
+                    </div>
+                </div>
+            </div>
+
+
         <div
           onMouseOver={handleMouseOverCanvas}
           onMouseOut={handleMouseOutCanvas}
