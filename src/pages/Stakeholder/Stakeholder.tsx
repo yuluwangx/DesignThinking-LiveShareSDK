@@ -54,6 +54,10 @@ const StakeholderMap: React.FC = () => {
     navigate('/empathymap')
   }
 
+  const needs = () => {
+    navigate('/needsstatements')
+  }
+  
   const items: MenuItem[] = [
     {
       label: <a href=" ">Stakeholder Map</a >,
@@ -72,7 +76,7 @@ const StakeholderMap: React.FC = () => {
       key: '3',
     },
     {
-      label: <a href="https://www.aliyun.com">Needs Statement</a >,
+      label: <div onClick={needs}>Needs Statement</div>,
       key: '4',
     },
     {

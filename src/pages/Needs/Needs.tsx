@@ -461,6 +461,21 @@ const NeedsStatements: React.FC = () => {
               </label>
             </div>
           </div>
+
+          <div onClick={setImg}>
+            <div>
+              <img
+                className="Einfo"
+                src="/images/movepic.png"
+                alt=""
+                style={{ transform: 'translate(-45%, 0%)' }}
+              />
+            </div>
+            <div className="Enn" style={{ transform: 'translate(5%, 0%)' }}>
+              Move Pic
+            </div>
+          </div>
+
           <div onClick={SetEr}>
             <div>
               < img className="Einfo" src="/images/shape.png" alt="" />
@@ -471,7 +486,7 @@ const NeedsStatements: React.FC = () => {
             <div>
               <img
                 className="Einfo"
-                src="/images/sticker.png"
+                src="/images/movesticker.png"
                 alt=""
                 style={{ transform: 'translate(30%, 0%)' }}
               />
@@ -480,31 +495,34 @@ const NeedsStatements: React.FC = () => {
               Move
             </div>
           </div>
-          <div onClick={setImg}>
+
+
+          <div onClick={onAddNote}>
             <div>
-              <img
-                className="Einfo"
-                src="/images/language.png"
-                alt=""
-                style={{ transform: 'translate(-45%, 0%)' }}
-              />
+              < img className="Einfo" src="/images/vote.png" alt="" />
             </div>
-            <div className="Enn" style={{ transform: 'translate(5%, 0%)' }}>
-              Move
-            </div>
+            <div className="Enn">Vote</div>
           </div>
+
         </div>
 
         <div className="Eright">
-          <div>
+          {/* <div>
             < img className="Eback" src="/images/in.png" alt="" />
-          </div>
+          </div> */}
 
-          <div>
+          {/* <div>
             < img className="Ereturn" src="/images/in.png" alt="" />
+          </div> */}
+          {/* <Button onClick={back}>back</Button> */}
+          <div onClick={back}>
+            <div>
+              < img className="Einfo" src="/images/return.png" alt="" />
+            </div>
+            <div className="Enn">Back</div>
           </div>
-          <Button onClick={back}>back</Button>
         </div>
+
       </div>
 
       <div
