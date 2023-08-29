@@ -389,7 +389,7 @@ const NeedsStatements: React.FC = () => {
     <div className="Enine">
       <div className="Eup">
         <div className="Eleft">
-          <div className="Etext">Needs Statement</div>
+          <div className="Etext">Need Statement</div>
           <div>
             <Popover
               content={NeedsInfo}

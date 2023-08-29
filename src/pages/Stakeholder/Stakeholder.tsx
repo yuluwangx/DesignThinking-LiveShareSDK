@@ -56,7 +56,7 @@ const StakeholderMap: React.FC = () => {
 
   const items: MenuItem[] = [
     {
-      label: <a href=" ">Stackholder Map</a >,
+      label: <a href=" ">Stakeholder Map</a >,
       key: '0',
     },
     {
