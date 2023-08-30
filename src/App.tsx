@@ -108,14 +108,22 @@ function App() {
             }
           />
           <Route
-            path="/*"
+          // path="/*"
             element={
               // <AuthRoute>
               <HomeScreen />
               // </AuthRoute>
             }
           />
-          <Route path="/login" element={<Login />} />
+          {/* <Route path="/login" element={<Login />} /> */}
+          <Route
+            path="/*"
+            element={
+              // <AuthRoute>
+              <Login />
+              // </AuthRoute>
+            }
+          />
         </Routes>
       </main>
     </BrowserRouter>

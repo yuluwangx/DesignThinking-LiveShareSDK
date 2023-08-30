@@ -418,6 +418,23 @@ const NeedsStatements: React.FC = () => {
             </div>
             <div className="Enn">Sticker</div>
           </div>
+
+
+          <div onClick={stickerOn}>
+            <div>
+              <img
+                className="Einfo"
+                src="/images/movesticker.png"
+                alt=""
+                style={{ transform: 'translate(30%, 0%)' }}
+              />
+            </div>
+            <div className="Enn " style={{ transform: 'translate(30%, 0%)' }}>
+              Move
+            </div>
+          </div>
+
+          
           <div
             onClick={() => {
               setTool(InkingTool.laserPointer)
@@ -481,19 +498,6 @@ const NeedsStatements: React.FC = () => {
               < img className="Einfo" src="/images/shape.png" alt="" />
             </div>
             <div className="Enn">Eraser</div>
-          </div>
-          <div onClick={stickerOn}>
-            <div>
-              <img
-                className="Einfo"
-                src="/images/movesticker.png"
-                alt=""
-                style={{ transform: 'translate(30%, 0%)' }}
-              />
-            </div>
-            <div className="Enn " style={{ transform: 'translate(30%, 0%)' }}>
-              Move
-            </div>
           </div>
 
 
