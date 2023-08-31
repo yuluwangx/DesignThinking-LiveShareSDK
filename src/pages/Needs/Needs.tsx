@@ -553,7 +553,7 @@ const NeedsStatements: React.FC = () => {
                                 width: '100px',
                                 marginRight: '4px'
                             }}
-                            placeholder="Adam"
+                            placeholder="Developers"
                         />
                         <div style={{fontWeight: 'bold', fontSize: '1.5rem'}}>needs a way to</div>
                         <input 
@@ -567,7 +567,7 @@ const NeedsStatements: React.FC = () => {
                                 marginRight: '4px',
                                 width: '300px',
                             }}
-                            placeholder="analyse his performance metrics"
+                            placeholder="make sense of minimal designs"
                         />
                     </div>
                     <div style={{ display: 'inline-flex', alignItems: 'baseline', justifyContent: 'center', marginTop: '8px' }}>
@@ -579,10 +579,10 @@ const NeedsStatements: React.FC = () => {
                                 border: 'none', 
                                 borderBottom: '1px solid black',
                                 outline: 'none',
-                                width: '400px', // Changed width to 600px
+                                width: '400px', 
                                 marginLeft: '4px'
                             }}
-                            placeholder="he can optimize his workout routines"
+                            placeholder="they can prototype faster"
                         />
                     </div>
                 </div>

@@ -512,15 +512,14 @@ const StakeholderMap: React.FC = () => {
         </div>
 
         <div className="Eright">
-          <div>
-            < img className="Eback" src="/images/in.png" alt="" />
+          <div onClick={back}>
+            <div>
+              < img className="Einfo" src="/images/return.png" alt="" />
+            </div>
+            <div className="Enn">Back</div>
           </div>
-
-          <div>
-            < img className="Ereturn" src="/images/in.png" alt="" />
-          </div>
-          <Button onClick={back}>back</Button>
         </div>
+
       </div>
 
       <div

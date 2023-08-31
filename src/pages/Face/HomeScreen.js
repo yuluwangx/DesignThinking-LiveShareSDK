@@ -6,7 +6,106 @@ import { SignIn } from '../../SignIn.js'
 import { removePen } from '../../utils/pen_token'
 import { removePenScen } from '../../utils/pen_token_scen'
 import { removeSticker } from '../../utils/sticker_token'
+import { useState } from 'react'
+import Modal from 'react-modal'
+
 const HomeScreen = () => {
+
+  const [language, setLanguage] = useState("English"); 
+
+  const changeLanguage = (event) => {
+    setLanguage(event.target.value);
+  };
+
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const Modal = () => (
+    showModal ? ( 
+      <div style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', backgroundColor: 'rgba(0,0,0,0.5)' }}>
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '1em' }}>
+          <button
+            style={{
+            backgroundColor: 'white',
+            color: 'blue',
+            padding: '10px 20px',
+            fontSize: '18px',
+            margin: '5px'
+          }} 
+          onClick={() => { setLanguage("English"); toggleModal(); }}>English</button>
+          <button 
+            style={{
+            backgroundColor: 'blue',
+            color: 'white',
+            padding: '10px 20px',
+            fontSize: '18px',
+            margin: '5px'
+          }} 
+          onClick={() => { setLanguage("Chinese"); toggleModal(); }}>Chinese</button>
+        </div>
+      </div>
+    ) : null
+  );
+
+  const translations = {
+    "English": {
+      "Stakeholder": "Stakeholder",
+      "Map": "Map",
+      "Empathy": "Empathy",
+      "Scenario": "Scenario",
+      "Big Idea": "Big Idea",
+      "Vignettes": "Vignettes",
+      "Prioritization": "Prioritization",
+      "Grid": "Grid",
+      "Needs": "Needs",
+      "Statement": "Statement",
+      "Storyboarding": "Storyboarding",
+      "Assumptions": "Assumptions",
+      "And": "And",
+      "Questions": "Questions",
+      "Feedback": "Feedback",
+      "Experience": "Experience",
+      "Based": "Based",
+      "Roadmap": "Roadmap",
+      "Language": "Language",
+      "Help": "Help",
+      "Guide": "Guide",
+      "DesignThinking": "IBM Design Thinking",
+      "Toolkit":"Toolkit",
+      "IBM":"IBM SkillsBuild - Design Thinking",
+
+    },
+    "Chinese": {
+      "Stakeholder": "利益相关者",
+      "Map": "地图",
+      "Empathy": "同理心",
+      "Scenario": "情境",
+      "Big Idea": "重要观点",
+      "Vignettes": "小插图",
+      "Prioritization": "优先级",
+      "Grid": "网格",
+      "Needs": "需求",
+      "Statement": "陈述",
+      "Storyboarding": "故事板",
+      "Assumptions": "假设",
+      "And": "和",
+      "Questions": "问题",
+      "Feedback": "反馈",
+      "Experience": "经验",
+      "Based": "基础",
+      "Roadmap": "路线图",
+      "Language": "语言",
+      "Help": "帮助",
+      "Guide": "指南",
+      "DesignThinking": "IBM设计思想",
+      "Toolkit": "工具包",
+      "IBM": "IBM设计思想课程",
+    }
+  };
+  
 
   const navigate = useNavigate()
 
@@ -145,13 +244,14 @@ const HomeScreen = () => {
 
 
   return (
+  <div className='scale-container'>
     <div className='nine'>
       <div className='up'>
         <div className='title'>
           <div className="text-container">
             <div className="text-content">
-              <div>IBM Design Thinking</div>
-              <div className='seco'>Toolkit</div>
+              <div>{translations[language].DesignThinking}</div>
+              <div className='seco'>{translations[language].Toolkit}</div>
             </div>
           </div>
         </div>
@@ -160,7 +260,7 @@ const HomeScreen = () => {
           <div className='uu'>
             <a className='playLink' href="https://www.ibm.com/design/thinking/" target="_blank" rel="noopener noreferrer">
               <img className='play' src="/images/link.png" />
-              IBM SkillsBuild - Design Thinking</a>
+              {translations[language].IBM}</a>
           </div>
         </div>
       </div>
@@ -173,40 +273,40 @@ const HomeScreen = () => {
             <Popover content={stackholderInfo} title="Stakeholer Map" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>Stakeholder</div>
-            <div className='ttt ttS'>Map</div>
+            <div className='ttt'>{translations[language].Stakeholder}</div>
+            <div className='ttt ttS'>{translations[language].Map}</div>
           </div>
 
           <div className='block empathy' onClick={empathy}>
             <Popover content={empathyInfo} title="Empathy Map" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>Empathy</div>
-            <div className='ttt ttS'>Map</div>
+            <div className='ttt'>{translations[language].Empathy}</div>
+            <div className='ttt ttS'>{translations[language].Map}</div>
           </div>
 
           <div className='block scenario' onClick={scenario}>
             <Popover content={ScenarioInfo} title="Scenario Map" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>Scenario</div>
-            <div className='ttt ttS'>Map</div>
+            <div className='ttt'>{translations[language].Scenario}</div>
+            <div className='ttt ttS'>{translations[language].Map}</div>
           </div>
 
           <div className='block big' onClick={big}>
             <Popover content={bigInfo} title="Big Idea Vignettes" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>Big Idea</div>
-            <div className='ttt ttS'>Vignettes</div>
+            <div className='ttt'>{translations[language].BigIdea}</div>
+            <div className='ttt ttS'>{translations[language].Vignettes}</div>
           </div>
 
           <div className='block prio' onClick={prio}>
             <Popover content={prioInfo} title="Prioritization Grid" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>Prioritization</div>
-            <div className='ttt ttS'>Grid</div>
+            <div className='ttt'>{translations[language].Prioritization}</div>
+            <div className='ttt ttS'>{translations[language].Grid}</div>
           </div>
         </div>
 
@@ -216,41 +316,41 @@ const HomeScreen = () => {
             <Popover content={needInfo} title="Needs Statement" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>Needs</div>
-            <div className='ttt ttS'>Statement</div>
+            <div className='ttt'>{translations[language].Needs}</div>
+            <div className='ttt ttS'>{translations[language].Statement}</div>
           </div>
 
           <div className='block story' onClick={story}>
             <Popover content={storyInfo} title="Storyboarding" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='story ttt'>Storyboarding</div>
+            <div className='story ttt'>{translations[language].Storyboarding}</div>
           </div>
 
           <div className='block assum' onClick={assum}>
             <Popover content={assumInfo} title="Assumptions And Questions" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt sh'>Assumptions</div>
-            <div className='ttt shh'>And</div>
-            <div className='ttt  thr'>Questions</div>
+            <div className='ttt sh'>{translations[language].Assumptions}</div>
+            <div className='ttt shh'>{translations[language].And}</div>
+            <div className='ttt  thr'>{translations[language].Questions}</div>
           </div>
 
           <div className='block feed' onClick={feed}>
             <Popover content={feedInfo} title="Feedback Grid" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>Feedback</div>
-            <div className='ttt ttS'>Grid</div>
+            <div className='ttt'>{translations[language].Feedback}</div>
+            <div className='ttt ttS'>{translations[language].Grid}</div>
           </div>
 
           <div className='block experience' onClick={experience}>
             <Popover content={experienceInfo} title="Experience Based Readmap" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt sh'>Experience</div>
-            <div className='ttt shh'>Based</div>
-            <div className='ttt  thr'>Roadmap</div>
+            <div className='ttt sh'>{translations[language].Experience}</div>
+            <div className='ttt shh'>{translations[language].Based}</div>
+            <div className='ttt  thr'>{translations[language].Roadmap}</div>
           </div>
         </div>
       </div>
@@ -259,24 +359,29 @@ const HomeScreen = () => {
 
         <div className='ff guide'>
           <img className='info' src="/images/guide.png" alt="" />
-          <div className='footT s'>Guide</div>
+          <div className='footT s'>{translations[language].Guide}</div>
         </div>
 
         <div className='ff help'>
           <img className='info' src="/images/help.png" alt="" />
-          <div className='footT s'>Help</div>
+          <div className='footT s'>{translations[language].Help}</div>
         </div>
 
         <div className='ff lan'>
-          <img className='info' src="/images/language.png" alt="" />
-          <div className='footT '>Language</div>
+          <img className='info' src="/images/language.png" alt="" onClick={toggleModal}  />
+          <div className='footT ' onClick={toggleModal}> 
+          {translations[language].Language}
+          </div>  
         </div>
 
       </div>
 
     </div>
-
+    <Modal />
+ </div>
+ 
   )
+ 
 }
 
 export default HomeScreen

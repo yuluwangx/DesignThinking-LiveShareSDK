@@ -172,3 +172,10 @@
 .s {
   margin-left: 10px;
 }
+
+.scale-container {
+  transform: scale(0.85); /* This scales the container to 80% of its original size */
+  transform-origin: top left; /* This sets the point around which the scaling occurs */
+  width: 100%; /* To make sure it takes full width */
+  overflow-x: hidden; /* To hide horizontal scrollbar if it appears */
+}
