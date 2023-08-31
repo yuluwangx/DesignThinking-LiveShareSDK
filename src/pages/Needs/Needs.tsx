@@ -434,7 +434,7 @@ const NeedsStatements: React.FC = () => {
             </div>
           </div>
 
-          
+
           <div
             onClick={() => {
               setTool(InkingTool.laserPointer)
@@ -567,7 +567,7 @@ const NeedsStatements: React.FC = () => {
                                 marginRight: '4px',
                                 width: '300px',
                             }}
-                            placeholder="a fitness tracking app"
+                            placeholder="analyse his performance metrics"
                         />
                     </div>
                     <div style={{ display: 'inline-flex', alignItems: 'baseline', justifyContent: 'center', marginTop: '8px' }}>
@@ -582,7 +582,7 @@ const NeedsStatements: React.FC = () => {
                                 width: '400px', // Changed width to 600px
                                 marginLeft: '4px'
                             }}
-                            placeholder="he can track his workout progress"
+                            placeholder="he can optimize his workout routines"
                         />
                     </div>
                 </div>

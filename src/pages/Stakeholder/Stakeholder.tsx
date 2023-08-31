@@ -33,6 +33,8 @@ import { useNavigate } from 'react-router-dom'
 import { getSticker, setSticker } from '../../utils/sticker_token'
 import { Button } from 'react-bootstrap'
 import { useLiveCanvas } from '@microsoft/live-share-react'
+
+
 const StakeholderMap: React.FC = () => {
   const ScenarioInfo = (
     <div style={{ width: '360px' }}>
@@ -57,7 +59,7 @@ const StakeholderMap: React.FC = () => {
   const needs = () => {
     navigate('/needsstatements')
   }
-  
+
   const items: MenuItem[] = [
     {
       label: <a href=" ">Stakeholder Map</a >,
@@ -410,7 +412,6 @@ const StakeholderMap: React.FC = () => {
             </div>
           </div>
         </div>
-
         <div className="Emid">
           <div onClick={onAddNote}>
             <div>
@@ -418,6 +419,23 @@ const StakeholderMap: React.FC = () => {
             </div>
             <div className="Enn">Sticker</div>
           </div>
+
+
+          <div onClick={stickerOn}>
+            <div>
+              <img
+                className="Einfo"
+                src="/images/movesticker.png"
+                alt=""
+                style={{ transform: 'translate(30%, 0%)' }}
+              />
+            </div>
+            <div className="Enn " style={{ transform: 'translate(30%, 0%)' }}>
+              Move
+            </div>
+          </div>
+
+          
           <div
             onClick={() => {
               setTool(InkingTool.laserPointer)
@@ -461,38 +479,36 @@ const StakeholderMap: React.FC = () => {
               </label>
             </div>
           </div>
+
+          <div onClick={setImg}>
+            <div>
+              <img
+                className="Einfo"
+                src="/images/movepic.png"
+                alt=""
+                style={{ transform: 'translate(-45%, 0%)' }}
+              />
+            </div>
+            <div className="Enn" style={{ transform: 'translate(5%, 0%)' }}>
+              Move Pic
+            </div>
+          </div>
+
           <div onClick={SetEr}>
             <div>
               < img className="Einfo" src="/images/shape.png" alt="" />
             </div>
             <div className="Enn">Eraser</div>
           </div>
-          <div onClick={stickerOn}>
+
+
+          <div onClick={onAddNote}>
             <div>
-              <img
-                className="Einfo"
-                src="/images/sticker.png"
-                alt=""
-                style={{ transform: 'translate(30%, 0%)' }}
-              />
+              < img className="Einfo" src="/images/vote.png" alt="" />
             </div>
-            <div className="Enn " style={{ transform: 'translate(30%, 0%)' }}>
-              Move
-            </div>
+            <div className="Enn">Vote</div>
           </div>
-          <div onClick={setImg}>
-            <div>
-              <img
-                className="Einfo"
-                src="/images/language.png"
-                alt=""
-                style={{ transform: 'translate(-45%, 0%)' }}
-              />
-            </div>
-            <div className="Enn" style={{ transform: 'translate(5%, 0%)' }}>
-              Move
-            </div>
-          </div>
+
         </div>
 
         <div className="Eright">
