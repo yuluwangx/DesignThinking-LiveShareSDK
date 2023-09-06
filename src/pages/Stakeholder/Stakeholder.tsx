@@ -391,27 +391,24 @@ const StakeholderMap: React.FC = () => {
     <div className="Enine">
       <div className="Eup">
         <div className="Eleft">
-          <div className="Etext">Stakeholder Map</div>
-          <div>
-            <Popover
-              content={ScenarioInfo}
-              title="Stakeholder Map"
-              trigger="hover">
-              < img className="Einfo" src="/images/info.png" />
-            </Popover>
-            <div className="EdropDown">
-              <Dropdown
-                menu={{
-                  items,
-                }}
-                trigger={['click']}>
-                <a onClick={(e) => e.preventDefault()}>
-                  <DownOutlined />
-                </a >
-              </Dropdown>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div>
+              <Popover content={ScenarioInfo} title="Stakeholder Map" trigger="hover">
+                <img className="Einfo" src="/images/info.png" />
+              </Popover>
             </div>
+            <div className="Etext">Stakeholder Map</div>
+          </div>
+          <div className="EdropDown">
+            <Dropdown menu={{ items }}>
+              <a onClick={(e) => e.preventDefault()}>
+                <DownOutlined />
+              </a>
+            </Dropdown>
           </div>
         </div>
+
+
         <div className="Emid">
           <div onClick={onAddNote}>
             <div>
