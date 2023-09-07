@@ -452,7 +452,7 @@ const StakeholderMap: React.FC = () => {
               />
             </div>
             <div className="Enn" style={{ transform: 'translate(50%, 0)' }}>
-              Line
+              Pen
             </div>
           </div>
           <div>
@@ -472,7 +472,7 @@ const StakeholderMap: React.FC = () => {
                   style={{ display: 'none' }}
                   onChange={handleImageChange}
                 />
-                Picture
+                Image
               </label>
             </div>
           </div>
