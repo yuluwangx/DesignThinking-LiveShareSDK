@@ -388,28 +388,21 @@ const NeedsStatements: React.FC = () => {
   return (
     <div className="Enine">
       <div className="Eup">
-        <div className="Eleft">
+        <div className="Eleft" style={{ display: 'grid', gridTemplateColumns: 'auto auto', alignItems: 'center' }}>
           <div className="Etext">Need Statement</div>
-          <div>
-            <Popover
-              content={NeedsInfo}
-              title="Scenario Map"
-              trigger="hover">
-              < img className="Einfo" src="/images/info.png" />
-            </Popover>
-            <div className="EdropDown">
-              <Dropdown
-                menu={{
-                  items,
-                }}
-                trigger={['click']}>
-                <a onClick={(e) => e.preventDefault()}>
-                  <DownOutlined />
-                </a >
-              </Dropdown>
-            </div>
+          <div className="EdropDown">
+            <Dropdown menu={{ items }} trigger={['click']}>
+              <a onClick={(e) => e.preventDefault()}>
+                <DownOutlined />
+              </a>
+            </Dropdown>
           </div>
         </div>
+        <Popover content={NeedsInfo} title="Scenario Map" trigger="hover">
+          <img className="Einfo" src="/images/info.png" alt="" />
+        </Popover>
+
+
 
         <div className="Emid">
           <div onClick={onAddNote}>
@@ -501,16 +494,20 @@ const NeedsStatements: React.FC = () => {
           </div>
 
 
-          <div onClick={onAddNote}>
-            <div>
-              < img className="Einfo" src="/images/vote.png" alt="" />
-            </div>
-            <div className="Enn">Vote</div>
-          </div>
-
         </div>
 
         <div className="Eright">
+
+
+          <div>
+            <div>
+              <img className="Einfo" src="/images/download.png" alt="" />
+            </div>
+            <div className="Enn">Download</div>
+          </div>
+
+          <a id="downloadLink" style={{ display: 'none' }} />
+
           <div onClick={back}>
             <div>
               < img className="Einfo" src="/images/return.png" alt="" />
