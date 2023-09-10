@@ -21,7 +21,6 @@ import {
   createBrainstormModel,
 } from '../Sticker/BrainstormModel'
 import React, { useEffect, useState, useRef, useCallback } from 'react'
-// import * as React from 'react'
 import { ConnectionState, IFluidContainer } from 'fluid-framework'
 import { BrainstormView } from '../Sticker/view/BrainstormView'
 import { DefaultColor } from '../Sticker/view/Color'
@@ -33,9 +32,33 @@ import { useNavigate } from 'react-router-dom'
 import { getSticker, setSticker } from '../../utils/sticker_token'
 import { Button } from 'react-bootstrap'
 import { useLiveCanvas } from '@microsoft/live-share-react'
+import html2canvas from 'html2canvas'
 
 
-const StakeholderMap: React.FC = () => {
+
+// const StakeholderMap: React.FC = () => {
+const StakeholderMap = () => {
+
+
+const downloadCanvasAsImage = () => {
+  if (liveCanvasRef.current) {
+    html2canvas(liveCanvasRef.current).then((canvas) => {
+      const imageDataURL = canvas.toDataURL('image/jpeg');
+
+      const downloadLink = document.createElement('a');
+      downloadLink.href = imageDataURL;
+      downloadLink.download = 'canvas_image.jpg';
+
+      downloadLink.click();
+
+      alert('Download complete.');
+    });
+  } else {
+    alert('Download failed, please try again later.');
+  }
+};
+
+
   const ScenarioInfo = (
     <div style={{ width: '360px' }}>
       As-is Scenario Maps help to document collective understanding of user
@@ -391,8 +414,8 @@ const StakeholderMap: React.FC = () => {
     <div className="Enine">
       <div className="Eup">
         <div className="Eleft">
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <div>
+          <div style={{ display: 'flex', alignItems: 'center' }} >
+            <div data-testid="stakeholder-map-page">
               <Popover content={ScenarioInfo} title="Stakeholder Map" trigger="hover">
                 <img className="Einfo" src="/images/info.png" />
               </Popover>
@@ -509,6 +532,16 @@ const StakeholderMap: React.FC = () => {
         </div>
 
         <div className="Eright">
+          <div onClick={downloadCanvasAsImage}>
+            <div>
+              <img className="Einfo" src="/images/download.png" alt="" />
+            </div>
+            <div className="Enn">Download</div>
+          </div>
+
+          <a id="downloadLink" style={{ display: 'none' }} />
+
+
           <div onClick={back}>
             <div>
               < img className="Einfo" src="/images/return.png" alt="" />
