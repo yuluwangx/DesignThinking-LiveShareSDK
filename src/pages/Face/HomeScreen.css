@@ -3,7 +3,7 @@
 }
 
 .up {
-  margin-top: 20px;
+  margin-top: 60px;
   display: inline-block;
 }
 
@@ -17,6 +17,10 @@
 .right {
   display: inline-block;
   margin-left: 125px;
+  margin-top: 0px; /* Add margin-top to create space between title and link */
+  position: absolute;
+  bottom: 0; /* Position at the bottom */
+  left: 0; /* Position at the left */
 }
 
 .logo {
@@ -40,19 +44,21 @@
 
 .uu {
   display: inline-block;
+  margin-left: 0px; /* Adjust margin-left as needed */
+  margin-top: 20px; /* Add margin-top to create space between title and link */
 }
 
 .playLink {
   font-size: 17px;
   font-weight: bold;
   color: blue;
-  margin-left: 20px;
+  margin-left: 0; /* Remove margin-left */
 }
 
 .play {
   width: 31px;
   height: 24px;
-  margin-right: 20px;
+  margin-right: 5px; /* Adjust margin-right as needed */
 }
 
 .content {

@@ -73,8 +73,7 @@ const HomeScreen = () => {
       "Language": "Language",
       "Help": "Help",
       "Guide": "Guide",
-      "DesignThinking": "IBM Design Thinking",
-      "Toolkit":"Toolkit",
+      "DesignThinking": "IBM Design Thinking Toolkit",
       "IBM":"IBM SkillsBuild - Design Thinking",
 
     },
@@ -100,8 +99,7 @@ const HomeScreen = () => {
       "Language": "语言",
       "Help": "帮助",
       "Guide": "指南",
-      "DesignThinking": "IBM设计思想",
-      "Toolkit": "工具包",
+      "DesignThinking": "IBM设计思想工具包",
       "IBM": "IBM设计思想课程",
     }
   };
@@ -251,12 +249,10 @@ const HomeScreen = () => {
           <div className="text-container">
             <div className="text-content">
               <div>{translations[language].DesignThinking}</div>
-              <div className='seco'>{translations[language].Toolkit}</div>
             </div>
           </div>
         </div>
         <div className='right'>
-          <div><img className='logo' src="/images/IBM.png" /></div>
           <div className='uu'>
             <a className='playLink' href="https://www.ibm.com/design/thinking/" target="_blank" rel="noopener noreferrer">
               <img className='play' src="/images/ibmlogo.jpeg" />
