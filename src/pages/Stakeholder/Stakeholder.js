@@ -1,4 +1,4 @@
-import './EmpathyMap.css'
+import './Stakeholder.css'
 import { DownOutlined } from '@ant-design/icons'
 import { Dropdown, Space } from 'antd'
 import { Popover } from 'antd'
@@ -8,31 +8,11 @@ import { LiveCanvas, InkingTool } from '@microsoft/live-share-canvas'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { useLiveCanvas } from '../../utils/useLiveCanvas'
 import { useNavigate } from 'react-router-dom'
-import html2canvas from 'html2canvas'; 
-import { saveAs } from 'file-saver';
-import { Modal, Button } from 'antd';
+import { Button } from 'react-bootstrap'
 
 
 
-const EmpathyMap = () => {
-
-  const [downloadComplete, setDownloadComplete] = useState(false); 
-
-  const handleDownload = async () => {
-    if (divRef.current) {
-      const canvas = await html2canvas(divRef.current);
-      canvas.toBlob(function (blob) {
-        saveAs(blob, 'canvas.png');
-        setDownloadComplete(true); // Set download complete state to true
-      });
-    }
-  };
-
-  const closeNotification = () => {
-    setDownloadComplete(false); // Close the notification
-  };
-
-
+const StakeholderMap = () => {
   const navigate = useNavigate()
   const containerSchema = {
     initialObjects: {
@@ -109,16 +89,16 @@ const EmpathyMap = () => {
     initialize()
   }, [])
 
-  const stakeholderInfo = (
+  const empathyInfo = (
     <div style={{ width: '360px' }}>
-      Stakeholder mapping is an invaluable asset for project management, 
-      as it enables you to gain a better understanding of your 
-      stakeholders and how to manage them effectively.
+      Empathy Maps help to rapidly put your team in the user’s
+      shoes and align on pains and gains—whether at the
+      beginning of a project or mid-stream when you need to re-focus on your user.
     </div>
   )
   const items = [
     {
-      label: <a href="/stackholder">Stakeholder Map</a>,
+      label: <a href="/stackholder">Stackholder Map</a>,
       key: '0',
     },
     {
@@ -126,32 +106,32 @@ const EmpathyMap = () => {
       key: '1',
     },
     {
-      label: <a href="/back">Big Idea Vignettes</a>,
+      label: <a href="https://www.aliyun.com">Big Idea Vignettes</a>,
       key: '2',
     },
 
     {
-      label: <a href="/back">Priorization Grid</a>,
+      label: <a href="https://www.aliyun.com">Priorization Grid</a>,
       key: '3',
     },
     {
-      label: <a href="/back">Needs Statement</a>,
+      label: <a href="https://www.aliyun.com">Needs Statement</a>,
       key: '4',
     },
     {
-      label: <a href="/back">Storyboadrding</a>,
+      label: <a href="https://www.aliyun.com">Storyboadrding</a>,
       key: '5',
     },
     {
-      label: <a href="/back">Assumption and Questions</a>,
+      label: <a href="https://www.aliyun.com">Assumption and Questions</a>,
       key: '6',
     },
     {
-      label: <a href="/back">Feedback Grid</a>,
+      label: <a href="https://www.aliyun.com">Feedback Grid</a>,
       key: '7',
     },
     {
-      label: <a href="/back">Experience-Based Roadmap</a>,
+      label: <a href="https://www.aliyun.com">Experience-Based Roadmap</a>,
       key: '8',
     },
 
@@ -160,10 +140,15 @@ const EmpathyMap = () => {
   return (
     <div className="Enine">
       <div className='Eup'>
-      
+
         <div className='Eleft'>
           <div className='Etext'>
-            <span>Stakeholder Map</span>
+            Empathy Map
+          </div>
+          <div>
+            <Popover content={empathyInfo} title="Empathy Map" trigger="hover">
+              <img className='Einfo' src="/images/info.png" />
+            </Popover>
             <div className='EdropDown'>
               <Dropdown
                 menu={{
@@ -177,11 +162,7 @@ const EmpathyMap = () => {
               </Dropdown>
             </div>
           </div>
-          <Popover content={stakeholderInfo} title="Stakeholder Map" trigger="hover">
-            <img className='Einfo' src="/images/info.png" />
-          </Popover>
         </div>
-
 
 
         <div className='Emid'>
@@ -190,30 +171,26 @@ const EmpathyMap = () => {
               <img className='Einfo' src="/images/sticker.png" alt="" />
             </div>
             <div className='Enn'>
-              Note
+              Sticker
             </div>
           </div>
-
           <div onClick={clearCanvas}>
             <div>
-              <img className='Einfo' src="/images/clear.png" alt="" />
+              <img className='Einfo' src="/images/arrow.png" alt="" />
             </div>
             <div className='Enn'>
               Clear
             </div>
           </div>
-
           <div onClick={setToPen}>
             <div>
               <img className='Einfo' src="/images/line.png" alt=""
-                style={{ transform: 'translate(30%, 0%)' }} />
+                style={{ transform: 'translate(50%, 0)' }} />
             </div>
-            <div className='Enn'
-            style={{ transform: 'translate(30%, 0%)' }} >
-              Pen
+            <div className='Enn' style={{ transform: 'translate(50%, 0)' }}>
+              Line
             </div>
           </div>
-
           <div>
             <div>
               <img className='Einfo' src="/images/picture.png" alt=""
@@ -221,20 +198,25 @@ const EmpathyMap = () => {
             </div>
             <div className='Enn'
               style={{ transform: 'translate(35%, 0%)' }}>
-              Image
+              Picture
             </div>
           </div>
-
           <div onClick={setToEraser}>
             <div>
               <img className='Einfo' src="/images/shape.png" alt="" />
             </div>
-            <div className='Enn'
-              style={{ transform: 'translate(35%, 0%)' }}>
-              Eraser
-            </div>
             <div className='Enn'>
-              
+              <button style={{
+                background: 'none',
+                border: 'none',
+                padding: '0',
+                font: 'inherit',
+                cursor: 'pointer',
+                outline: 'inherit'
+              }}
+                >
+                Eraser
+              </button>
             </div>
           </div>
           <div onClick={setToLaserPointer}>
@@ -261,24 +243,17 @@ const EmpathyMap = () => {
 
 
         <div className='Eright'>
-
-          <div onClick={handleDownload}>
-            <div>
-              <img className="Einfo" src="/images/download.png" alt="" />
-            </div>
-            <div className="Enn">Download</div>
+          <div>
+            <img className='Eback' src="/images/in.png" alt=""
+            />
           </div>
 
-          <a id="downloadLink" style={{ display: 'none' }} />
-
-
-          <div onClick={back}>  
-            <div>
-              <img className="Einfo" src="/images/return.png" alt="" />
-            </div>
-            <div className="Enn">Back</div>
+          <div>
+            <img className='Ereturn' src="/images/in.png" alt=""
+            />
           </div>
-          </div>
+          <Button onClick={back}>back</Button>
+        </div>
 
       </div>
       <div id="inkingRoot">
@@ -289,4 +264,4 @@ const EmpathyMap = () => {
 
 }
 
-export default EmpathyMap
+export default StakeholderMap

@@ -159,9 +159,9 @@ const HomeScreen = () => {
 
   const stackholderInfo = (
     <div style={{ width: '360px' }}>
-      Empathy Maps help to rapidly put your team in the user’s shoes and
-      align on pains and gains—whether at the
-      beginning of a project or mid-stream when you need to re-focus on your user.
+      Stakeholder mapping is an invaluable asset for project management, 
+      as it enables you to gain a better understanding of your 
+      stakeholders and how to manage them effectively.
     </div>
   )
 
@@ -266,18 +266,18 @@ const HomeScreen = () => {
 
         <div className='firstRow'>
           <div className='block stackholder' onClick={stakeholder}>
-            <Popover content={stackholderInfo} title="Stakeholer Map" trigger="hover">
-              <img className='info' src="/images/info.png" />
-            </Popover>
-            <div className='ttt'>{translations[language].Stakeholder}</div>
-            <div className='ttt ttS'>{translations[language].Map}</div>
-          </div>
-
-          <div className='block empathy' onClick={empathy}>
             <Popover content={empathyInfo} title="Empathy Map" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
             <div className='ttt'>{translations[language].Empathy}</div>
+            <div className='ttt ttS'>{translations[language].Map}</div>
+          </div>
+
+          <div className='block empathy' onClick={empathy}>
+            <Popover content={stackholderInfo} title="Stakeholder Map" trigger="hover">
+              <img className='info' src="/images/info.png" />
+            </Popover>
+            <div className='ttt'>{translations[language].Stakeholder}</div>
             <div className='ttt ttS'>{translations[language].Map}</div>
           </div>
 

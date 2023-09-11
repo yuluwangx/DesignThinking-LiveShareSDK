@@ -60,39 +60,39 @@ const NeedsStatements: React.FC = () => {
 
   const items: MenuItem[] = [
     {
-      label: <div onClick={stakeholder}>Stakeholder Map</div >,
+      label: <div onClick={empathy}>Stakeholder Map</div >,
       key: '0',
     },
     {
-      label: <div onClick={empathy}>Empathy Map</div>,
+      label: <div onClick={back}>Empathy Map</div>,
       key: '1',
     },
     {
-      label: <a href="https://www.aliyun.com">Big Idea Vignettes</a >,
+      label: <div onClick={back}>Big Idea Vignettes</div>,
       key: '2',
     },
     {
-      label: <a href="https://www.aliyun.com">Priorization Grid</a >,
+      label: <div onClick={back}>Priorization Grid</div>,
       key: '3',
     },
     {
-      label: <a href="https://www.aliyun.com">Needs Statement</a >,
+      label: <div onClick={back}>Needs Statement</div>,
       key: '4',
     },
     {
-      label: <a href="https://www.aliyun.com">Storyboadrding</a >,
+      label: <div onClick={back}>Storyboadrding</div>,
       key: '5',
     },
     {
-      label: <a href="https://www.aliyun.com">Assumption and Questions</a >,
+      label: <div onClick={back}>Assumption and Questions</div>,
       key: '6',
     },
     {
-      label: <a href="https://www.aliyun.com">Feedback Grid</a >,
+      label: <div onClick={back}>Feedback Grid</div>,
       key: '7',
     },
     {
-      label: <a href="https://www.aliyun.com">Experience-Based Roadmap</a >,
+      label: <div onClick={back}>Experience-Based Roadmap</div>,
       key: '8',
     },
   ]
@@ -390,6 +390,12 @@ const NeedsStatements: React.FC = () => {
       <div className="Eup">
         <div className="Eleft" style={{ display: 'grid', gridTemplateColumns: 'auto auto', alignItems: 'center' }}>
           <div className="Etext">Need Statement</div>
+
+
+        <Popover content={NeedsInfo} title="Scenario Map" trigger="hover">
+          <img className="Einfo" src="/images/info.png" alt="" />
+        </Popover>
+
           <div className="EdropDown">
             <Dropdown menu={{ items }} trigger={['click']}>
               <a onClick={(e) => e.preventDefault()}>
@@ -398,9 +404,6 @@ const NeedsStatements: React.FC = () => {
             </Dropdown>
           </div>
         </div>
-        <Popover content={NeedsInfo} title="Scenario Map" trigger="hover">
-          <img className="Einfo" src="/images/info.png" alt="" />
-        </Popover>
 
 
 
@@ -409,7 +412,7 @@ const NeedsStatements: React.FC = () => {
             <div>
               < img className="Einfo" src="/images/sticker.png" alt="" />
             </div>
-            <div className="Enn">Sticker</div>
+            <div className="Enn">Note</div>
           </div>
 
 
@@ -423,7 +426,7 @@ const NeedsStatements: React.FC = () => {
               />
             </div>
             <div className="Enn " style={{ transform: 'translate(30%, 0%)' }}>
-              Move
+              MoveNote
             </div>
           </div>
 
@@ -447,7 +450,7 @@ const NeedsStatements: React.FC = () => {
               />
             </div>
             <div className="Enn" style={{ transform: 'translate(50%, 0)' }}>
-              Line
+              Draw
             </div>
           </div>
           <div>
@@ -467,7 +470,7 @@ const NeedsStatements: React.FC = () => {
                   style={{ display: 'none' }}
                   onChange={handleImageChange}
                 />
-                Picture
+                Image
               </label>
             </div>
           </div>
@@ -482,7 +485,7 @@ const NeedsStatements: React.FC = () => {
               />
             </div>
             <div className="Enn" style={{ transform: 'translate(5%, 0%)' }}>
-              Move Pic
+              MoveImg
             </div>
           </div>
 
@@ -497,24 +500,20 @@ const NeedsStatements: React.FC = () => {
         </div>
 
         <div className="Eright">
-
-
           <div>
             <div>
               <img className="Einfo" src="/images/download.png" alt="" />
             </div>
             <div className="Enn">Download</div>
           </div>
-
-          <a id="downloadLink" style={{ display: 'none' }} />
-
-          <div onClick={back}>
-            <div>
-              < img className="Einfo" src="/images/return.png" alt="" />
+          <div>
+            <div onClick={back}>
+              <img className="Einfo" src="/images/return.png" alt="" />
             </div>
             <div className="Enn">Back</div>
           </div>
         </div>
+
 
       </div>
 
@@ -527,7 +526,7 @@ const NeedsStatements: React.FC = () => {
             <div
                 style={{
                     position: 'absolute',
-                    top: '20%',
+                    top: '15%',
                     left: '50%',
                     transform: 'translate(-50%, -50%)',
                     zIndex: 1000,
@@ -537,7 +536,6 @@ const NeedsStatements: React.FC = () => {
                     boxShadow: '0 0 10px rgba(0,0,0,0.2)'
                 }}
             >
-                <h2 style={{ textAlign: 'center', fontSize: '1.5rem', fontWeight: 'bold' }}>Needs Statement</h2>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <div style={{ display: 'inline-flex', alignItems: 'baseline', justifyContent: 'center' }}>
                         <input 

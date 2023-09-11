@@ -54,14 +54,24 @@
 }
 
 .EdropDown {
-  float: right;
+  position: relative;
+  float: left;
   margin-top: 15px;
-  /* transform: translate(140%, 0); */
+  margin-right: 10px;
+}
+
+.EdropDown .ant-dropdown {
+  position: absolute;
+  top: 100%; /* Position it below the button */
+  left: 10%; /* Center horizontally relative to the button */
+  /* transform: translateX(-50%); Center horizontally */
 }
 
 .Enn {
-  transform: translate(20%, 0);
+  position: relative; /* Ensure the container is relatively positioned */
+  z-index: 1; /* Set a higher z-index value to make sure it's above the Pen tool */
 }
+
 
 .Ell {
   transform: translate(8%, 0);

@@ -1,81 +1,87 @@
+/* Updated CSS */
 .Enine {
-    width: 1280px;
-  }
-  
-  .Eup {
-    height: 70px;
-    margin-top: 20px;
-    border: solid black 1px;
-  }
-  
-  .Eleft {
-    width: 310px;
-    height: 100%;
-    float: left;
-    position: relative;
-  }
-  
-  .Emid {
-    width: 600px;
-    height: 100%;
-    margin-left: 30px;
-    float: left;
-    display: flex;
-    justify-content: space-around;
-    border-left: solid black 1px;
-    border-right: solid black 1px;
-  }
-  
-  .Eright {
-    width: 150px;
-    margin-left: 0px;
-    height: 100%;
-    float: left;
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .Einfo {
-    margin-top: 8px;
-    width: 31px;
-    height: 31px;
-    float: right;
-  }
-  
-  .Etext {
-    font-size: 22px;
-    font-weight: bold;
-    color: black;
-    position: absolute;
-    top: 50%;
-    left: 40%;
-    transform: translate(-35%, -50%);
-  }
-  
-.EdropDown {
+  width: 1280px;
+}
+
+.Eup {
+  height: 70px;
+  margin-top: 20px;
+  border: solid black 1px;
+}
+
+.Eleft {
+  width: 300px;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+
+.Emid {
+  width: 650px;
+  height: 100%;
+  margin-left: 30px;
+  float: left;
+  display: flex;
+  justify-content: space-around;
+  align-items: center; /* Center items vertically */
+  border-left: solid black 1px;
+  border-right: solid black 1px;
+}
+
+.Eright {
+  width: 200px;
+  margin-left: 0px;
+  height: 100%;
+  float: left;
+  display: flex;
+  /* flex-direction: column; Stack items vertically */
+  justify-content: space-around;
+  /* align-items: center; Center items horizontally */
+}
+
+.Einfo {
+  margin-top: 8px;
+  width: 31px;
+  height: 31px;
   float: right;
+  font-size: 20px;
+  display: block; /* Ensure icons are displayed as blocks */
+}
+
+.Etext {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  text-align: center; /* Center the title text */
+}
+
+.EdropDown {
+  position: relative;
+  float: left;
   margin-top: 15px;
   margin-right: 10px;
-  size: 1px;
 }
-  
-  .Enn {
-    transform: translate(20%, 0);
-  }
-  
-  .Ell {
-    transform: translate(8%, 0);
-  }
-  
-  .Eback {
-    width: 31px;
-    height: 31px;
-    margin-top: 20px;
-    float: left;
-  }
-  
-  .Ereturn {
-    margin-top: 20px;
-    width: 31px;
-    height: 31px;
-  }
+
+.EdropDown .ant-dropdown {
+  position: absolute;
+  top: 100%; /* Position it below the button */
+  left: 10%; /* Center horizontally relative to the button */
+  /* transform: translateX(-50%); Center horizontally */
+}
+
+.Enn {
+  width: 60px;
+  text-align: center; /* Center tool names under icons */
+  font-size: 14px;
+  margin-top: 8px; /* Add some spacing between icon and name */
+}
+
+.button-container {
+  display: flex; /* Use flexbox to place buttons on the same line */
+  align-items: center; /* Center items vertically within the container */
+}
+
+/* Add spacing between buttons if needed */
+.button-container + .button-container {
+  margin-left: 20px; /* Adjust the margin as needed */
+}
