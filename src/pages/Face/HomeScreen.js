@@ -11,6 +11,43 @@ import Modal from 'react-modal'
 
 const HomeScreen = () => {
 
+  const [showHelpModal, setShowHelpModal] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = ['/images/UserManual1.jpg', '/images/UserManual2.jpg'];
+  
+  const openHelpModal = () => {
+    setShowHelpModal(true);
+    console.log(showHelpModal)
+  };
+
+  const closeHelpModal = () => {
+    setShowHelpModal(false);
+    setCurrentImageIndex(0); // Reset to the first image when closing
+  };
+
+  const nextImage = () => {
+    if (currentImageIndex < images.length - 1) {
+      setCurrentImageIndex(currentImageIndex + 1);
+    }
+  };
+
+  const previousImage = () => {
+    if (currentImageIndex > 0) {
+      setCurrentImageIndex(currentImageIndex - 1);
+    }
+  };
+
+  const downloadGuide = () => {
+    // Create a virtual link element
+    const link = document.createElement('a');
+    link.href = '/Guide.pdf'; // The path to your PDF file
+    link.target = '_blank'; // Open the link in a new tab
+    link.download = 'Guide.pdf'; // The default file name when downloading
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link); // Clean up the link element
+  };
+
   const [language, setLanguage] = useState("English"); 
 
   const changeLanguage = (event) => {
@@ -116,7 +153,7 @@ const HomeScreen = () => {
   }
 
   const scenario = () => {
-    navigate("/scenariomap")
+    alert("ok")
   }
 
   const big = () => {
@@ -355,13 +392,42 @@ const HomeScreen = () => {
 
         <div className='ff guide'>
           <img className='info' src="/images/guide.png" alt="" />
-          <div className='footT s'>{translations[language].Guide}</div>
+          <div className='footT s' onClick={downloadGuide}>{translations[language].Guide}</div>
         </div>
 
-        <div className='ff help'>
+        <div className='ff help' onClick={openHelpModal}>
           <img className='info' src="/images/help.png" alt="" />
           <div className='footT s'>{translations[language].Help}</div>
         </div>
+        
+
+          {/* Help Modal */}
+          {showHelpModal && (
+            <div className="help-modal">
+              <button className="close-button" onClick={closeHelpModal}>
+                Close
+              </button>
+              <img
+                className="help-image"
+                src={images[currentImageIndex]}
+                alt={`Help Image ${currentImageIndex + 1}`}
+              />
+              <div className="image-navigation">
+                {currentImageIndex > 0 && (
+                  <button className="prev-button" onClick={previousImage}>
+                    Previous
+                  </button>
+                )}
+                {currentImageIndex < images.length - 1 && (
+                  <button className="next-button" onClick={nextImage}>
+                    Next
+                  </button>
+                )}
+              </div>
+            </div>
+          )}
+
+
 
         <div className='ff lan'>
           <img className='info' src="/images/language.png" alt="" onClick={toggleModal}  />
