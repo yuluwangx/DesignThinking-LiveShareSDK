@@ -22,7 +22,7 @@ const EmpathyMap = () => {
     if (divRef.current) {
       const canvas = await html2canvas(divRef.current);
       canvas.toBlob(function (blob) {
-        saveAs(blob, 'canvas.png');
+        saveAs(blob, 'StakeholderMap.png');
         setDownloadComplete(true); // Set download complete state to true
       });
     }
@@ -160,7 +160,7 @@ const EmpathyMap = () => {
   return (
     <div className="Enine">
       <div className='Eup'>
-      
+
         <div className='Eleft'>
           <div className='Etext'>
             <span>Stakeholder Map</span>
@@ -210,7 +210,7 @@ const EmpathyMap = () => {
             </div>
             <div className='Enn'
             style={{ transform: 'translate(30%, 0%)' }} >
-              Pen
+              Line
             </div>
           </div>
 
@@ -249,7 +249,7 @@ const EmpathyMap = () => {
           </div>
           <div onClick={setToHighlighter}>
             <div>
-              <img className='Einfo' src="/images/language.png" alt=""
+              <img className='Einfo' src="/images/highlight.png" alt=""
                 style={{ transform: 'translate(-45%, 0%)' }} />
             </div>
             <div className='Enn'

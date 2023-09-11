@@ -263,7 +263,6 @@ const NeedsStatements: React.FC = () => {
     // setIsDrawingMode(true)
     //@ts-ignore
     liveCanvasRef.current.style.pointerEvents = 'auto'
-    console.log('笔')
     setTool(InkingTool.pen)
   }
 
@@ -392,7 +391,7 @@ const NeedsStatements: React.FC = () => {
           <div className="Etext">Need Statement</div>
 
 
-        <Popover content={NeedsInfo} title="Scenario Map" trigger="hover">
+        <Popover content={NeedsInfo} title="Needs Statement" trigger="hover">
           <img className="Einfo" src="/images/info.png" alt="" />
         </Popover>
 
@@ -506,6 +505,7 @@ const NeedsStatements: React.FC = () => {
             </div>
             <div className="Enn">Download</div>
           </div>
+
           <div>
             <div onClick={back}>
               <img className="Einfo" src="/images/return.png" alt="" />
