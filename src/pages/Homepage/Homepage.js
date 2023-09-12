@@ -148,7 +148,7 @@ const HomeScreen = () => {
   }
 
   const empathy = () => {
-    navigate("/empathymap")
+    alert("Not available yet")
   }
 
   const scenario = () => {
@@ -290,7 +290,7 @@ const HomeScreen = () => {
         </div>
         <div className='IBMcourseLink'>
           <div className='IBMcourse'>
-            <a className='playLink' href="https://www.ibm.com/design/thinking/" target="_blank" rel="noopener noreferrer">
+            <a className='playLink' href="https://www.ibm.com/design/thinking/" target="_blank" rel="IBM DesginThinking">
               <img className='play' src="/images/ibmlogo.jpeg" />
               {translations[language].IBM}</a>
           </div>
@@ -302,15 +302,15 @@ const HomeScreen = () => {
 
         <div className='firstRow'>
           <div className='block stackholder' onClick={stakeholder}>
-            <Popover content={empathyInfo} title="Empathy Map" trigger="hover">
+            <Popover content={stakeholderInfo} title="Stakeholder Map" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
             <div className='firstline'>{translations[language].Empathy}</div>
             <div className='firstline secondline'>{translations[language].Map}</div>
           </div>
 
-          <div className='block empathy' onClick={empathy}>
-            <Popover content={stakeholderInfo} title="Stakeholder Map" trigger="hover">
+          <div className='block empathy'>
+            <Popover content={empathyInfo} title="Empathy Map" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
             <div className='firstline'>{translations[language].Stakeholder}</div>

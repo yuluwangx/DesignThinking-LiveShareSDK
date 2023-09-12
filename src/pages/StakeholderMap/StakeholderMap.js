@@ -118,11 +118,11 @@ const StakeholderMap = () => {
   )
   const items = [
     {
-      label: <a href="/stackholder">Stakeholder Map</a>,
+      label: <a href="/stakeholder">Stakeholder Map</a>,
       key: '0',
     },
     {
-      label: <a href="/scenariomap">Scenario Map</a>,
+      label: <a href="/back">Scenario Map</a>,
       key: '1',
     },
     {
