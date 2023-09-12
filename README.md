@@ -1,46 +1,31 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created with LiveShare Canvas, Brainstrom Sticker and InkingManager to implement an online collaborative brainstorming Teams App.
 
-## Available Scripts
+## Environment Setup
 
-In the project directory, you can run:
+First, run ‘npx tinylicious@latest 7070 on terminal to start LiveShare Canvas, and then open another terminal and run 'npm start'. If you have never used tinylicious before, it will ask ‘OK to proceed? (y)’, you should type ‘y’ and hit the enter button. 
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Localhost Connection
+Now, test the app locally in browser. Open http://localhost:3000 to view it in the browser, the application might have some errors as it’s implemented in Teams with different settings. As long as localhost:3000 is connected, we can proceed to next step.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Ngrok
 
-### `npm test`
+1. Download ngrok through this \href{https://ngrok.com/download}{link}, then unzip ngrok from the terminal. 
+2. After this, add token on the terminal by typing ‘ngrok config add-authtoken <token>’, please remember to replace the <token> with your unique ngrok token. 
+3. Lastly, start a tunnel by typing ngrok http 3000 on terminal. 
+4. If your local host port is 3000, 3000 should be replaced by the port number if your port is not 3000.
+5. Copy the Forwarding link for later use.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Deploy to Teams
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. In the code, there’s a file called manifest.json that configures all the publication information including App Azure ID, application information, and developer information. 
+2. Click the json file and replace your ‘configurationUrl’ with the link you copied from ngrok, and add ‘?inTeams=true’ at the end of the link to enable it in Teams app. 
+3. Login on Teams using the credentials, schedule a meeting for testing. 
+4. Next, in the ‘Manage Apps’ pane, tap on ‘Upload a custom app’, choose ‘Upload an app to your organisation’s app catalogue’ and upload the modified the zip file. 
+5. After uploading the app, add this app to the meeting you set up earlier. 
+6. Now join the meeting and find search ‘Design Thinking’ on Apps tab. 
+7. You should see a pop up, click ‘Go Home Page’ and save, now you’re all set!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
