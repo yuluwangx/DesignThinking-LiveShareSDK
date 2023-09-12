@@ -3,7 +3,6 @@ import './App.css'
 import { Container } from 'react-bootstrap'
 import Login from '../src/pages/Login/login'
 import HomeScreen from './pages/Face/HomeScreen'
-import EmpathyMap from './pages/Empathy/EmpathyMap'
 import * as microsoftTeams from '@microsoft/teams-js'
 import {
   BrowserRouter as Router,
@@ -12,11 +11,10 @@ import {
   BrowserRouter,
 } from 'react-router-dom'
 import { AuthRoute } from '../src/components/AuthComponent'
-import ScenarioMap from './pages/Scenario/Scenario'
 import BrainstormPage from '../src/pages/Sticker/BrainStormPage'
-import { LiveCanvasPage } from './pages/Empathy/LiveCanvasPage'
+import { LiveCanvasPage } from './pages/StakeholderMap/LiveCanvasPage'
 import { inTeams } from './utils/inTeams'
-import StakeholderMap from './pages/Stakeholder/Stakeholder'
+import StakeholderMap from './pages/StakeholderMap/StakeholderMap'
 import NeedsStatements from './pages/Needs/Needs'
 
 
@@ -67,13 +65,6 @@ function App() {
               // </AuthRoute>
             }></Route>
 
-            <Route
-              path="/empathymap"
-              element={
-                // <AuthRoute>
-                <EmpathyMap />
-                // </AuthRoute>
-              }></Route>
 
               <Route
                 path="/needsstatements"
@@ -99,14 +90,8 @@ function App() {
               // </AuthRoute>
             }
           />
-          <Route
-            path="/scenariomap"
-            element={
-              // <AuthRoute>
-              <ScenarioMap />
-              // </AuthRoute>
-            }
-          />
+          
+
           <Route
           // path="/*"
             element={

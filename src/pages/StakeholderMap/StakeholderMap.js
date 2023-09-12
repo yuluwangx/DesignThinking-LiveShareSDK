@@ -1,4 +1,4 @@
-import './EmpathyMap.css'
+import './StakeholderMap.css'
 import { DownOutlined } from '@ant-design/icons'
 import { Dropdown, Space } from 'antd'
 import { Popover } from 'antd'
@@ -14,7 +14,7 @@ import { Modal, Button } from 'antd';
 
 
 
-const EmpathyMap = () => {
+const StakeholderMap = () => {
 
   const [downloadComplete, setDownloadComplete] = useState(false); 
 
@@ -289,4 +289,4 @@ const EmpathyMap = () => {
 
 }
 
-export default EmpathyMap
+export default StakeholderMap
