@@ -1,8 +1,8 @@
-.nine {
+.page {
   width: 1280px;
 }
 
-.up {
+.top {
   margin-top: 60px;
   display: inline-block;
 }
@@ -14,7 +14,7 @@
   display: inline;
 }
 
-.right {
+.IBMcourseLink {
   display: inline-block;
   margin-left: 125px;
   margin-top: 0px; /* Add margin-top to create space between title and link */
@@ -38,11 +38,7 @@
   margin-left: 200px;
 }
 
-.seco {
-  margin-left: 150px;
-}
-
-.uu {
+.IBMcourse {
   display: inline-block;
   margin-left: 0px; /* Adjust margin-left as needed */
   margin-top: 20px; /* Add margin-top to create space between title and link */
@@ -128,7 +124,7 @@
   float: right;
 }
 
-.ttt {
+.firstline {
   font-size: 25px;
   font-weight: bold;
   color: black;
@@ -138,19 +134,19 @@
   transform: translate(-50%, -50%);
 }
 
-.ttS {
+.secondline {
   margin-top: 25px;
 }
 
-.sh {
+.first {
   top: 40%;
 }
 
-.shh {
+.second {
   margin-top: 15px;
 }
 
-.thr {
+.third {
   margin-top: 40px;
 }
 
@@ -163,13 +159,13 @@
   margin-top: 50px;
 }
 
-.ff {
+.bottomlogo {
   float: right;
   margin-right: 80px;
   width: 50px;
 }
 
-.footT {
+.bottomLogoText {
   color: black;
   font-size: 20px;
   margin-left: -15px;

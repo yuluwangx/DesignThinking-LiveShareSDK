@@ -38,14 +38,13 @@ const HomeScreen = () => {
   };
 
   const downloadGuide = () => {
-    // Create a virtual link element
     const link = document.createElement('a');
-    link.href = '/Guide.pdf'; // The path to your PDF file
-    link.target = '_blank'; // Open the link in a new tab
-    link.download = 'Guide.pdf'; // The default file name when downloading
+    link.href = '/Guide.pdf'; 
+    link.target = '_blank'; 
+    link.download = 'Guide.pdf'; 
     document.body.appendChild(link);
     link.click();
-    document.body.removeChild(link); // Clean up the link element
+    document.body.removeChild(link); 
   };
 
   const [language, setLanguage] = useState("English"); 
@@ -153,15 +152,15 @@ const HomeScreen = () => {
   }
 
   const scenario = () => {
-    alert("ok")
+    alert("Not available yet")
   }
 
   const big = () => {
-    alert("ok")
+    alert("Not available yet")
   }
 
   const prio = () => {
-    alert("ok")
+    alert("Not available yet")
   }
 
   const need = () => {
@@ -169,15 +168,15 @@ const HomeScreen = () => {
   }
 
   const story = () => {
-    alert("ok")
+    alert("Not available yet")
   }
 
   const assum = () => {
-    alert("ok")
+    alert("Not available yet")
   }
 
   const feed = () => {
-    alert("ok")
+    alert("Not available yet")
   }
 
   const experience = () => {
@@ -194,7 +193,7 @@ const HomeScreen = () => {
     alert("clear finish")
   }
 
-  const stackholderInfo = (
+  const stakeholderInfo = (
     <div style={{ width: '360px' }}>
       Stakeholder mapping is an invaluable asset for project management, 
       as it enables you to gain a better understanding of your 
@@ -280,8 +279,8 @@ const HomeScreen = () => {
 
   return (
   <div className='scale-container'>
-    <div className='nine'>
-      <div className='up'>
+    <div className='page'>
+      <div className='top'>
         <div className='title'>
           <div className="text-container">
             <div className="text-content">
@@ -289,8 +288,8 @@ const HomeScreen = () => {
             </div>
           </div>
         </div>
-        <div className='right'>
-          <div className='uu'>
+        <div className='IBMcourseLink'>
+          <div className='IBMcourse'>
             <a className='playLink' href="https://www.ibm.com/design/thinking/" target="_blank" rel="noopener noreferrer">
               <img className='play' src="/images/ibmlogo.jpeg" />
               {translations[language].IBM}</a>
@@ -306,40 +305,40 @@ const HomeScreen = () => {
             <Popover content={empathyInfo} title="Empathy Map" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>{translations[language].Empathy}</div>
-            <div className='ttt ttS'>{translations[language].Map}</div>
+            <div className='firstline'>{translations[language].Empathy}</div>
+            <div className='firstline secondline'>{translations[language].Map}</div>
           </div>
 
           <div className='block empathy' onClick={empathy}>
-            <Popover content={stackholderInfo} title="Stakeholder Map" trigger="hover">
+            <Popover content={stakeholderInfo} title="Stakeholder Map" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>{translations[language].Stakeholder}</div>
-            <div className='ttt ttS'>{translations[language].Map}</div>
+            <div className='firstline'>{translations[language].Stakeholder}</div>
+            <div className='firstline secondline'>{translations[language].Map}</div>
           </div>
 
           <div className='block scenario' onClick={scenario}>
             <Popover content={ScenarioInfo} title="Scenario Map" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>{translations[language].Scenario}</div>
-            <div className='ttt ttS'>{translations[language].Map}</div>
+            <div className='firstline'>{translations[language].Scenario}</div>
+            <div className='firstline secondline'>{translations[language].Map}</div>
           </div>
 
           <div className='block big' onClick={big}>
             <Popover content={bigInfo} title="Big Idea Vignettes" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>{translations[language].BigIdea}</div>
-            <div className='ttt ttS'>{translations[language].Vignettes}</div>
+            <div className='firstline'>{translations[language].BigIdea}</div>
+            <div className='firstline secondline'>{translations[language].Vignettes}</div>
           </div>
 
           <div className='block prio' onClick={prio}>
             <Popover content={prioInfo} title="Prioritization Grid" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>{translations[language].Prioritization}</div>
-            <div className='ttt ttS'>{translations[language].Grid}</div>
+            <div className='firstline'>{translations[language].Prioritization}</div>
+            <div className='firstline secondline'>{translations[language].Grid}</div>
           </div>
         </div>
 
@@ -349,55 +348,55 @@ const HomeScreen = () => {
             <Popover content={needInfo} title="Needs Statement" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>{translations[language].Needs}</div>
-            <div className='ttt ttS'>{translations[language].Statement}</div>
+            <div className='firstline'>{translations[language].Needs}</div>
+            <div className='firstline secondline'>{translations[language].Statement}</div>
           </div>
 
           <div className='block story' onClick={story}>
             <Popover content={storyInfo} title="Storyboarding" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='story ttt'>{translations[language].Storyboarding}</div>
+            <div className='story firstline'>{translations[language].Storyboarding}</div>
           </div>
 
           <div className='block assum' onClick={assum}>
             <Popover content={assumInfo} title="Assumptions And Questions" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt sh'>{translations[language].Assumptions}</div>
-            <div className='ttt shh'>{translations[language].And}</div>
-            <div className='ttt  thr'>{translations[language].Questions}</div>
+            <div className='firstline first'>{translations[language].Assumptions}</div>
+            <div className='firstline second'>{translations[language].And}</div>
+            <div className='firstline  third'>{translations[language].Questions}</div>
           </div>
 
           <div className='block feed' onClick={feed}>
             <Popover content={feedInfo} title="Feedback Grid" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt'>{translations[language].Feedback}</div>
-            <div className='ttt ttS'>{translations[language].Grid}</div>
+            <div className='firstline'>{translations[language].Feedback}</div>
+            <div className='firstline secondline'>{translations[language].Grid}</div>
           </div>
 
           <div className='block experience' onClick={experience}>
             <Popover content={experienceInfo} title="Experience Based Readmap" trigger="hover">
               <img className='info' src="/images/info.png" />
             </Popover>
-            <div className='ttt sh'>{translations[language].Experience}</div>
-            <div className='ttt shh'>{translations[language].Based}</div>
-            <div className='ttt  thr'>{translations[language].Roadmap}</div>
+            <div className='firstline first'>{translations[language].Experience}</div>
+            <div className='firstline second'>{translations[language].Based}</div>
+            <div className='firstline  third'>{translations[language].Roadmap}</div>
           </div>
         </div>
       </div>
 
       <div className='foot'>
 
-        <div className='ff guide'>
+        <div className='bottomlogo guide'>
           <img className='info' src="/images/guide.png" alt="" />
-          <div className='footT s' onClick={downloadGuide}>{translations[language].Guide}</div>
+          <div className='bottomLogoText s' onClick={downloadGuide}>{translations[language].Guide}</div>
         </div>
 
-        <div className='ff help' onClick={openHelpModal}>
+        <div className='bottomlogo help' onClick={openHelpModal}>
           <img className='info' src="/images/help.png" alt="" />
-          <div className='footT s'>{translations[language].Help}</div>
+          <div className='bottomLogoText s'>{translations[language].Help}</div>
         </div>
         
 
@@ -429,9 +428,9 @@ const HomeScreen = () => {
 
 
 
-        <div className='ff lan'>
+        <div className='bottomlogo lan'>
           <img className='info' src="/images/language.png" alt="" onClick={toggleModal}  />
-          <div className='footT ' onClick={toggleModal}> 
+          <div className='bottomLogoText ' onClick={toggleModal}> 
           {translations[language].Language}
           </div>  
         </div>
