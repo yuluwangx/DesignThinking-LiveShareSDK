@@ -1,8 +1,8 @@
-.Enine {
+.Page {
   width: 1280px;
 }
 
-.Eup {
+.Top {
   height: 70px;
   margin-top: 20px;
   border: solid black 1px;
@@ -39,7 +39,7 @@
 
 
 
-.Einfo {
+.mapIcon {
   margin-top: 8px;
   width: 31px;
   height: 31px;
@@ -66,7 +66,7 @@
   /* transform: translateX(-50%); Center horizontally */
 }
 
-.Enn {
+.toolName {
   transform: translate(20%, 0);
 }
 

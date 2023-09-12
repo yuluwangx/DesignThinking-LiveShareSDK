@@ -158,8 +158,8 @@ const StakeholderMap = () => {
 
   ]
   return (
-    <div className="Enine">
-      <div className='Eup'>
+    <div className="Page">
+      <div className='Top'>
 
         <div className='Eleft'>
           <div className='Etext'>
@@ -178,7 +178,7 @@ const StakeholderMap = () => {
             </div>
           </div>
           <Popover content={stakeholderInfo} title="Stakeholder Map" trigger="hover">
-            <img className='Einfo' src="/images/info.png" />
+            <img className='mapIcon' src="/images/info.png" />
           </Popover>
         </div>
 
@@ -187,28 +187,28 @@ const StakeholderMap = () => {
         <div className='Emid'>
           <div>
             <div>
-              <img className='Einfo' src="/images/sticker.png" alt="" />
+              <img className='mapIcon' src="/images/sticker.png" alt="" />
             </div>
-            <div className='Enn'>
+            <div className='toolName'>
               Note
             </div>
           </div>
 
           <div onClick={clearCanvas}>
             <div>
-              <img className='Einfo' src="/images/clear.png" alt="" />
+              <img className='mapIcon' src="/images/clear.png" alt="" />
             </div>
-            <div className='Enn'>
+            <div className='toolName'>
               Clear
             </div>
           </div>
 
           <div onClick={setToPen}>
             <div>
-              <img className='Einfo' src="/images/line.png" alt=""
+              <img className='mapIcon' src="/images/line.png" alt=""
                 style={{ transform: 'translate(30%, 0%)' }} />
             </div>
-            <div className='Enn'
+            <div className='toolName'
             style={{ transform: 'translate(30%, 0%)' }} >
               Line
             </div>
@@ -216,10 +216,10 @@ const StakeholderMap = () => {
 
           <div>
             <div>
-              <img className='Einfo' src="/images/picture.png" alt=""
+              <img className='mapIcon' src="/images/picture.png" alt=""
                 style={{ transform: 'translate(30%, 0%)' }} />
             </div>
-            <div className='Enn'
+            <div className='toolName'
               style={{ transform: 'translate(35%, 0%)' }}>
               Image
             </div>
@@ -227,32 +227,32 @@ const StakeholderMap = () => {
 
           <div onClick={setToEraser}>
             <div>
-              <img className='Einfo' src="/images/shape.png" alt="" />
+              <img className='mapIcon' src="/images/shape.png" alt="" />
             </div>
-            <div className='Enn'
+            <div className='toolName'
               style={{ transform: 'translate(35%, 0%)' }}>
               Eraser
             </div>
-            <div className='Enn'>
+            <div className='toolName'>
               
             </div>
           </div>
           <div onClick={setToLaserPointer}>
             <div>
-              <img className='Einfo' src="/images/sticker.png" alt=""
+              <img className='mapIcon' src="/images/sticker.png" alt=""
                 style={{ transform: 'translate(30%, 0%)' }} />
             </div>
-            <div className='Enn'
+            <div className='toolName'
               style={{ transform: 'translate(30%, 0%)' }}>
               Laser
             </div>
           </div>
           <div onClick={setToHighlighter}>
             <div>
-              <img className='Einfo' src="/images/highlight.png" alt=""
+              <img className='mapIcon' src="/images/highlight.png" alt=""
                 style={{ transform: 'translate(-45%, 0%)' }} />
             </div>
-            <div className='Enn'
+            <div className='toolName'
               style={{ transform: 'translate(5%, 0%)' }}>
               Highlight
             </div>
@@ -264,9 +264,9 @@ const StakeholderMap = () => {
 
           <div onClick={handleDownload}>
             <div>
-              <img className="Einfo" src="/images/download.png" alt="" />
+              <img className="mapIcon" src="/images/download.png" alt="" />
             </div>
-            <div className="Enn">Download</div>
+            <div className="toolName">Download</div>
           </div>
 
           <a id="downloadLink" style={{ display: 'none' }} />
@@ -274,9 +274,9 @@ const StakeholderMap = () => {
 
           <div onClick={back}>  
             <div>
-              <img className="Einfo" src="/images/return.png" alt="" />
+              <img className="mapIcon" src="/images/return.png" alt="" />
             </div>
-            <div className="Enn">Back</div>
+            <div className="toolName">Back</div>
           </div>
           </div>
 
