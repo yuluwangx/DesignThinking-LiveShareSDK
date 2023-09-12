@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import './App.css'
 import { Container } from 'react-bootstrap'
 import Login from '../src/pages/Login/login'
-import HomeScreen from './pages/Face/HomeScreen'
+import HomeScreen from './pages/Homepage/Homepage'
 import * as microsoftTeams from '@microsoft/teams-js'
 import {
   BrowserRouter as Router,
